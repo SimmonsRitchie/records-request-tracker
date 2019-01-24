@@ -1,0 +1,22 @@
+.text-input {
+    border: 1px solid #cacccd;
+    height: 50px;
+    font-size: $font-size-large;
+    font-weight: 300;
+    padding: $s-size;
+}
+
+/*EXTEND: We can use extend to borrow the styles from another
+css class. Similar to how a class might use another class's properties
+in Javascript. We can also override these properties, as we do with
+height in .textarea */
+
+
+.select {
+    @extend .text-input;
+}
+
+.textarea {
+    @extend .text-input;
+    height: 10rem;
+}

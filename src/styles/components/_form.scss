@@ -1,0 +1,19 @@
+/*
+Direct descendants:
+    We use the '> ELEMENT {}' statement to target
+    direct descendants of a class. Below, we're using this to target
+    ALL children in .form
+*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    >* {
+        margin-bottom: $m-size;
+    }
+}
+
+.form__error {
+    margin: 0 0 $m-size 0;
+    font-style: italic;
+}

@@ -1,0 +1,72 @@
+.list-header {
+    background: $off-white;
+    border: 1px solid darken($off-white, 7%);
+    color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size $m-size;
+}
+
+/* LIST BODY: we're add some space at the bottom so the page looks
+nicer */
+.list-body {
+  margin-bottom: $m-size;
+  @media (min-width: $desktop-breakpoint) {
+      margin-bottom: $l-size;
+  }  
+}
+
+
+/*
+HOVER: Below we use &:hover, a shorthand way of making a CSS change happen
+when it's hovered over.
+*/
+.list-item {
+    border: 1px solid darken($off-white, 7%);
+    border-top: none;
+    color: $dark-grey;
+    display: flex;
+    flex-direction: column;
+    padding: $s-size;
+    text-decoration: none;
+    transition: background .3s ease;
+    &:hover {
+        background: $off-white;
+    }
+    @media (min-width: $desktop-breakpoint) { //Moves amount to the the side when viewed in larger screens
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: $m-size;
+    }
+}
+
+.list-item--message {
+    align-items: center;
+    color: $grey;
+    justify-content: center;
+    padding: $m-size;
+    &:hover {
+        background: none;
+    }
+}
+
+.list-item__title {
+    margin: 0;
+    word-break: break-all; //Stops user from breaking display by entering in super long description
+}
+
+.list-item__subtitle {
+    color: $grey;
+    font-size: 1.4rem;
+    font-size: $font-size-small;
+}
+
+.list-item__data {
+    margin: $s-size 0 0 0; // resolves issue with margin being way too big on mobile
+    @media (min-width: $desktop-breakpoint) {
+        margin: 0;
+        padding-left: $s-size; // gives us some space if user enters really long item description
+    }
+}
+

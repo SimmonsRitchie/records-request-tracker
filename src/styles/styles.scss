@@ -1,0 +1,32 @@
+
+/* Remember that our partial scss files need to start with
+an underscore but that we don't include that underscore
+when we import.*/
+
+/* We use 'BEM', 'block element modifier. 
+
+BLOCK
+.btn {}
+
+ELEMENT - that depends upon the block 
+.btn__price {}
+
+MODIFIER - changes the style of the block
+.btn--orange {} 
+.btn--big {}
+
+*/
+
+@import './base/settings';
+@import './base/base';
+@import './components/box-layout';
+@import './components/button';
+@import './components/header';
+@import './components/content-container';
+@import './components/page-header';
+@import './components/input-group';
+@import './components/inputs';
+@import './components/form';
+@import './components/visibility';
+@import './components/list';
+@import './components/loader';

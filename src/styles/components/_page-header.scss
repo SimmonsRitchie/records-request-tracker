@@ -1,0 +1,21 @@
+/* This is a header for individual pages (eg summary page, 
+add expense page). It's different from the _header partial.
+*/
+
+.page-header {
+    background: $off-white;
+    margin-bottom: $l-size;
+    padding: $l-size 0;
+}
+
+.page-header__actions {
+    margin-top: $m-size;
+}
+
+.page-header__title {
+    font-weight: 300;
+    margin: 0;
+    span {
+        font-weight: bold; // We are using span to target the dynamic parts of the summary expense page.
+    }
+}

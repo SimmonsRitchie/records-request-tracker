@@ -1,0 +1,22 @@
+.button {
+    background-color: $blue;
+    border: none;
+    color: white;
+    display: inline-block; /* We set this up so that
+    when we apply this style to non-buttons that vertical margin and
+    padding actually takes effect.*/
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1; /* Similar to inline-block, we apply this so
+    that the appearance is more button-like when applied to non-buttons */
+    padding: $s-size;
+    text-decoration: none;
+}
+
+.button--nobg {
+    background: none;
+}
+
+.button--secondary {
+    background: #888888;
+}

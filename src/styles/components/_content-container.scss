@@ -1,0 +1,6 @@
+.content-container {
+    margin: 0 auto; // 'auto' evenly distributes space on left and right
+    padding: 0 $m-size; // Just sets up padding on left and right so content doesn't push up against sides of browser 
+    max-width: 80rem;
+
+}

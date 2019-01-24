@@ -1,0 +1,22 @@
+// Remember:
+// @media (min-width: VALUE) { }
+// Means that that the values in curly braces are applied to screens ABOVE
+// the min-width.
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $m-size;
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        margin-bottom: $l-size;
+    }
+}
+.input-group__item {
+    margin-bottom: $s-size;
+    
+    @media (min-width: $desktop-breakpoint) {
+        margin: 0 $s-size 0 0;
+    }
+}
