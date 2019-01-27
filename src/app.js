@@ -1,14 +1,19 @@
+import 'react-dates/initialize';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; // We use this component to connect redux to react
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { login, logout } from './actions/auth';
-import LoadingPage from './components/LoadingPage'
+import { firebase } from './firebase/firebase'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase'
+import { login, logout } from './actions/auth';
+import { startSetRequests } from './actions/requests'
+import LoadingPage from './components/LoadingPage'
+
+import {addRequest} from './actions/requests'
+import moment from 'moment'
 
 // CALLING STORE
 const store = configureStore();
@@ -22,6 +27,11 @@ const jsx = (
         <AppRouter />
     </Provider>
 );
+
+// FOR TESTING PURPOSES
+// store.dispatch(addRequest({description: 'Campaign finance data', agency: 'Dept of State', details: 'blah blah blah blah blah', createdAt: moment()}))
+// store.dispatch(addRequest({description: 'Use of force reports', agency: 'Harrisburg PD',
+//     details: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah', createdAt: moment()}))
 
 
 // RENDERAPP
@@ -60,10 +70,12 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid))
-        renderApp();
-        if (history.location.pathname === '/') {
-            history.push('/dashboard')
-        }
+        store.dispatch(startSetRequests()).then(() => {
+            renderApp();
+            if (history.location.pathname === '/') {
+                history.push('/dashboard')
+            }
+        })
     } else {
         store.dispatch(logout())
         renderApp();

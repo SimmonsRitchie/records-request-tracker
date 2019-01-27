@@ -60,6 +60,7 @@ when it's hovered over.
     color: $grey;
     font-size: 1.4rem;
     font-size: $font-size-small;
+    word-break: break-all; //Stops user from breaking display by entering in super long description
 }
 
 .list-item__data {

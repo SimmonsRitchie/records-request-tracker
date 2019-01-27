@@ -9,7 +9,7 @@ export const Header = ({ startLogout }) => (
         <div className="header__content">
         <Link className="header__title"
         to="/dashboard">
-            <h1>Records request tracker</h1>
+            <h1>Right-To-Know tracker</h1>
         </Link>
         <button
         className="button button--nobg"
