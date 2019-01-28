@@ -1,6 +1,6 @@
 import React from 'react';
 // import moment from 'moment'
-import { SingleDatePicker } from 'react-dates'
+import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import moment from 'moment-business-days';
 
 
@@ -11,7 +11,7 @@ class RequestForm extends React.Component {
             description: props.request ? props.request.description : "",
             agency: props.request ? props.request.agency : "",
             details: props.request ? props.request.details : "",
-            createdAt: props.request ? moment(props.request.createdAt) : moment(),
+            filingDate: props.request ? moment(props.request.filingDate) : moment(),
             calendarFocused: false,
             error: ""
         };
@@ -28,9 +28,9 @@ class RequestForm extends React.Component {
         const details = e.target.value
         this.setState(() => ({ details }))
      };
-    onDateChange = (createdAt) => {
-        if (createdAt) { //using an If statement here to prevent user from clearing value
-            this.setState(() => ({ createdAt }));
+    onDateChange = (filingDate) => {
+        if (filingDate) { //using an If statement here to prevent user from clearing value
+            this.setState(() => ({ filingDate }));
         }
     };
     // activates datepicker when clicked
@@ -47,7 +47,7 @@ class RequestForm extends React.Component {
                 description: this.state.description,
                 agency: this.state.agency,
                 details: this.state.details,
-                createdAt: this.state.createdAt.valueOf() // converts moment.js object into unix timestamp, otherwise we get errors with Firebase
+                filingDate: this.state.filingDate.valueOf() // converts moment.js object into unix timestamp, otherwise we get errors with Firebase
             })
         }
     }
@@ -75,12 +75,12 @@ class RequestForm extends React.Component {
                     onChange={this.onAgencyChange}
                 />
                 <SingleDatePicker
-                    date={this.state.createdAt} // Passing in value of now()
+                    date={this.state.filingDate} // Passing in value of now()
                     onDateChange={this.onDateChange}
                     focused={this.state.calendarFocused}
                     onFocusChange={this.onFocusChange}
                     numberOfMonths={1} // number of months that are displayed
-                    isOutsideRange={() => false} // determines whether day is selectable
+                    isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
                 />
                 <textarea 
                     className="textarea"
@@ -92,8 +92,8 @@ class RequestForm extends React.Component {
                 />
                 <div>
                     <h3>Record response schedule:</h3>
-                    <p>Interim response: {moment(this.state.createdAt).businessAdd(5).format('MMM-DD-YYYY')}</p>
-                    <p>Final response: {moment(this.state.createdAt).businessAdd(35).format('MMM-DD-YYYY')}</p>
+                    <p>Interim response: {moment(this.state.filingDate).businessAdd(5).format('MMM-DD-YYYY')}</p>
+                    <p>Final response: {moment(this.state.filingDate).businessAdd(35).format('MMM-DD-YYYY')}</p>
                 </div>
                 <div>
                     <button

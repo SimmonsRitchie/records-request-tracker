@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom'
 
-const RequestListItem = ({id, description, agency, details, createdAt}) => {
+const RequestListItem = ({id, description, agency, details, filingDate}) => {
     
     // Trunctates length of details so easier to display
     const detailsExcerpt = details.length > 100 ? details.substring(0, 100) + "..." : details;
@@ -19,7 +19,7 @@ const RequestListItem = ({id, description, agency, details, createdAt}) => {
             <span
                 className="list-item__subtitle"
             >
-                Filed: {moment(createdAt).format('MMM Do, YYYY')}
+                Filed: {moment(filingDate).format('MMM Do, YYYY')}
             </span>
             <br></br>
             <span

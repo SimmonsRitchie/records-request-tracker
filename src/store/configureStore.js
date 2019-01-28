@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth.js';
 import requestsReducer from '../reducers/requests.js';
+import filtersReducer from '../reducers/filters.js'
 
 // STORE CREATION
 // Using combineReducers allows us to unite all our reducers.
@@ -20,7 +21,8 @@ export default () => {
     const store = createStore(
         combineReducers({
             auth: authReducer,
-            requests: requestsReducer
+            requests: requestsReducer,
+            filters: filtersReducer
         }),
         composeEnhancers(applyMiddleware(thunk))
     );

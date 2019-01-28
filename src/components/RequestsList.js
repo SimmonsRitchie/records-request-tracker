@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import RequestsListItem from './RequestsListItem'
+import selectRequests from '../selectors/requests'
+
 
 const RequestList = (props) => (
     <div className="content-container">
@@ -18,7 +20,7 @@ const RequestList = (props) => (
 )
 
 const mapStateToProps = (state) => ({
-    requests: state.requests
+    requests: selectRequests(state.requests, state.filters)
 })
 
 export default connect(mapStateToProps)(RequestList);

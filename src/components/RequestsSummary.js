@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 
 const RequestsSummary = () => (
-    <div>
+    <div className="content-container">
         <p>Requests summary</p>
         <Link className="button" to="/create">Track request</Link>
     </div>
