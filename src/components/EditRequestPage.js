@@ -1,6 +1,7 @@
 import React from 'react';
-import RequestForm from './RequestForm'
 import { connect } from 'react-redux'
+import RequestForm from './RequestForm'
+import RequestSummary from './RequestSummary'
 import { startEditRequest, startRemoveRequest } from '../actions/requests'
 
 /* What's happening here:
@@ -31,16 +32,14 @@ export class EditRequestPage extends React.Component {
     render() { 
         return (
         <div>
-            <RequestForm 
-                onSubmit={this.startEditRequest}
-                request={this.props.request}
-            />
-            <button
-                className="button"
-                onClick={this.onRemove}
-            >
-                Remove
-            </button>
+            <RequestSummary />
+            <div className="content-container">
+                <RequestForm 
+                    onSubmit={this.startEditRequest}
+                    request={this.props.request}
+                    onRemove={this.onRemove}
+                />
+            </div>
         </div>
         )
     }

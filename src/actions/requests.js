@@ -14,9 +14,30 @@ export const startAddRequest = (requestData = {}) => {
             description = '',
             agency = '',
             details = '',
-            createdAt = 0
+            note = '',
+            status = '',
+            filingDate = 0,
+            finalResponseDate = 0,
+            actualFinalResponseDate = 0,
+            denialReason = '',
+            appealFilingDate = 0,
+            finalDetermDate = 0,
+            finalDetermDetails = ''
         } = requestData; // destructuring expense data and setting defaults
-        const request = { description, agency, details, createdAt } // reassembling expense data
+        const request = {
+            description,
+            agency,
+            details,
+            note,
+            status,
+            filingDate,
+            finalResponseDate,
+            actualFinalResponseDate,
+            denialReason,
+            appealFilingDate,
+            finalDetermDate,
+            finalDetermDetails
+         } // reassembling expense data
         return database.ref(`users/${uid}/requests`).push(request).then((ref) => {
             dispatch(addRequest({
                 id: ref.key, // setting ID as firebase key
@@ -34,7 +55,6 @@ export const editRequest = (id, updates ) => ({
 });
 
 // START EDIT
-
 export const startEditRequest = ( id, updates ) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;

@@ -2,6 +2,7 @@ import React from 'react';
 import RequestForm from './RequestForm'
 import { connect } from 'react-redux'
 import { startAddRequest } from '../actions/requests'
+import RequestSummary from './RequestSummary';
 
 export class AddRequestPage extends React.Component {
     addRequest = (request) => {
@@ -11,9 +12,12 @@ export class AddRequestPage extends React.Component {
     render() {
         return (
             <div>
-                <RequestForm 
-                    onSubmit={this.addRequest}
-                />
+                <RequestSummary />
+                <div className="content-container">
+                    <RequestForm 
+                        onSubmit={this.addRequest}
+                    />
+                </div>
             </div>
         )
     }

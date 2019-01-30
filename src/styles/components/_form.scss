@@ -13,6 +13,16 @@ Direct descendants:
     }
 }
 
+.form__group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 $s-size 0;
+}
+
+.form__item-label {
+    margin: 0 0 $s-size 0;
+}
+
 .form__error {
     margin: 0 0 $m-size 0;
     font-style: italic;

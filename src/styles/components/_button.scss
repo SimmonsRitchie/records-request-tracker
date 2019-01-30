@@ -13,6 +13,11 @@
     text-decoration: none;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .button--nobg {
     background: none;
 }
