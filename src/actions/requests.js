@@ -17,11 +17,14 @@ export const startAddRequest = (requestData = {}) => {
             note = '',
             status = '',
             filingDate = 0,
-            finalResponseDate = 0,
-            actualFinalResponseDate = 0,
-            denialReason = '',
+            estInterimResponseDate = 0,
+            gotInterimResponseDate = 0,
+            estFinalResponseDate = 0,
+            gotFinalResponseDate = 0,
             appealFilingDate = 0,
-            finalDetermDate = 0,
+            estFinalDetermDate = 0,
+            gotFinalDetermDate = 0,
+            denialReason = '',
             finalDetermDetails = ''
         } = requestData; // destructuring expense data and setting defaults
         const request = {
@@ -31,11 +34,14 @@ export const startAddRequest = (requestData = {}) => {
             note,
             status,
             filingDate,
-            finalResponseDate,
-            actualFinalResponseDate,
-            denialReason,
+            estInterimResponseDate,
+            gotInterimResponseDate,
+            estFinalResponseDate,
+            gotFinalResponseDate,
             appealFilingDate,
-            finalDetermDate,
+            estFinalDetermDate,
+            gotFinalDetermDate,
+            denialReason,
             finalDetermDetails
          } // reassembling expense data
         return database.ref(`users/${uid}/requests`).push(request).then((ref) => {

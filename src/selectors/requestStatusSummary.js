@@ -2,12 +2,19 @@ import React from 'react';
 import moment from 'moment';
 
 
-const listItemStatus = ({status, finalDetermDate, appealFilingDate}) => {
-    const todayDate = moment()
+const requestStatusSummary = ({status, estFinalResponseDate, appealFilingDate}) => {
+    /* We use moment's 'startOf' method in this function so that we don't get wacky results
+    when counting down to specific dates */
+    const todayDate = moment().startOf('day')
     let hStyle = {color: '#e2931b'}
     if (status === "waitingFinalResponse" || status === "extendedFinalResponseDate") {
-        const countdownToFinalResponse = moment(finalDetermDate).diff(todayDate, 'days')
-        return <span style={ hStyle }>Final response due: {countdownToFinalResponse} days</span>
+        const startOfEstFinalResponseDate = moment(estFinalResponseDate).startOf('day')
+        const DaysBetweenDates = startOfEstFinalResponseDate.diff(todayDate, 'days') // Moment's 'diff' method truncates results rather than rounds them
+        if (DaysBetweenDates === 0) {
+            return <span style={ hStyle }>Final response due today</span>
+        } else {
+            return <span style={ hStyle }>Final response due {todayDate.to(startOfEstFinalResponseDate)}</span>
+        }
     } else if (status === "recordsGranted" ) {
         let hStyle = {color: 'green' }
         return <span style={ hStyle }>Request granted</span>
@@ -30,4 +37,4 @@ const listItemStatus = ({status, finalDetermDate, appealFilingDate}) => {
     }
 }
 
-export default listItemStatus
+export default requestStatusSummary

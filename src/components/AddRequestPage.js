@@ -12,7 +12,9 @@ export class AddRequestPage extends React.Component {
     render() {
         return (
             <div>
-                <RequestSummary />
+                <RequestSummary
+                    pageTitle={"Add Request"}
+                />
                 <div className="content-container">
                     <RequestForm 
                         onSubmit={this.addRequest}

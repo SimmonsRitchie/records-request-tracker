@@ -1,16 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import getTotalActiveRequests from '../selectors/totalActiveRequests'
 
-
-const DashboardSummary = () => (
+const DashboardSummary = (props) => (
     <div className="page-header">
         <div className="content-container">
             <h1 className="page-header__title">
-                You have filed XX requests
+                You have {props.totalActiveRequests} active requests
             </h1>
-            <h2 className="page-header__title">
-                Viewing X because of filters
-            </h2>
             <div className="page-header__actions">
                 <Link className="button" to="/create">Add request</Link>
             </div>
@@ -18,4 +16,9 @@ const DashboardSummary = () => (
     </div>
 )
 
-export default DashboardSummary;
+const mapStateToProps = (state) => ({
+    totalActiveRequests: getTotalActiveRequests(state.requests)
+})
+
+
+export default connect(mapStateToProps)(DashboardSummary);

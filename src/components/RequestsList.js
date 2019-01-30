@@ -13,7 +13,7 @@ const RequestList = (props) => (
         </div>
         <div className="list-body">
             {props.requests.map((request, index) => {
-                return <RequestsListItem key={request.id} {...request} />
+                return <RequestsListItem key={request.id} request={request} />
             })}
         </div>
     </div>

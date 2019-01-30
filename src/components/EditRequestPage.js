@@ -32,7 +32,9 @@ export class EditRequestPage extends React.Component {
     render() { 
         return (
         <div>
-            <RequestSummary />
+            <RequestSummary 
+                pageTitle={"Edit request"}
+            />
             <div className="content-container">
                 <RequestForm 
                     onSubmit={this.startEditRequest}

@@ -5,15 +5,12 @@ import React from 'react';
 // <p>Estimated final response date: {moment(this.state.finalResponseDate).format('MMM. DD, YYYY')}</p>
 
 
-const RequestSummary = () => (
+const RequestSummary = (props) => (
     <div className="page-header">
         <div className="content-container">
             <h1 className="page-header__title">
-                New request
+                {props.pageTitle}
             </h1>
-            <h2 className="page-header__title">
-                Final response estimated in XX days
-            </h2>
         </div>
     </div>
 )

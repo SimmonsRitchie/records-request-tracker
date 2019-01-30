@@ -19,6 +19,12 @@ Direct descendants:
     margin: 0 0 $s-size 0;
 }
 
+.form__date-container {
+    background-color: $off-white;
+    border-radius: 5px;
+    padding: $s-size;
+}
+
 .form__item-label {
     margin: 0 0 $s-size 0;
 }
