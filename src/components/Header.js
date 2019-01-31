@@ -6,15 +6,27 @@ import { startLogout } from '../actions/auth';
 export const Header = ({ startLogout }) => (
     <header className="header">
         <div className="content-container">
-        <div className="header__content">
-        <Link className="header__title"
-        to="/dashboard">
-            <h1>Right-To-Know tracker</h1>
-        </Link>
-        <button
-        className="button button--nobg"
-        onClick={startLogout}>Logout</button>
-        </div>
+            <div className="header__content">
+                <Link className="header__title"
+                to="/dashboard">
+                    <h1>Right-To-Know tracker</h1>
+                </Link>
+                <div className="header__nav">
+                    <Link to="/rtkguide">
+                        <button
+                            className="button button--nobg"
+                        >
+                            RTK guide
+                        </button>
+                    </Link>
+                    <button
+                        className="button button--nobg"
+                        onClick={startLogout}
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
         </div>
      </header>
 );

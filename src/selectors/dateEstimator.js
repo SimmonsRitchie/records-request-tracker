@@ -8,21 +8,21 @@ const dateEstimator = (status, {
 }) => {
     switch (status) {
         case 'waitingInterimResponse':
-            const interimDue = moment(estInterimResponseDate).format('MMM Do, YYYY')
-            return `Interim response due: ${interimDue}`;
+            const interimDue = moment(estInterimResponseDate).format('MMM D, YYYY')
+            return `Interim response due on or before ${interimDue}`;
         case 'waitingFinalResponse':
         case 'extendedFinalResponseDate':
-            const finalDue = moment(estFinalResponseDate).format('MMM Do, YYYY')
-            return `Final response due: ${finalDue}`;
+            const finalDue = moment(estFinalResponseDate).format('MMM D, YYYY')
+            return `Final response due on or before ${finalDue}`;
         case 'recordsDenied':
         case 'recordsPartiallyGranted':
-            const deadlineDue = moment(estAppealDeadline).format('MMM Do, YYYY')
-            return `You have until ${deadlineDue} to appeal`;
+            const deadlineDue = moment(estAppealDeadline).format('MMM D, YYYY')
+            return `You can appeal on or before ${deadlineDue}`;
         case 'appealFiled':
-            const finalDetermDue = "woof woof"
-            return `OOR determination expected: ${finalDetermDue}`;
+            const finalDetermDue = moment(estFinalDetermDate).format('MMM D, YYYY')
+            return `OOR determination or or before ${finalDetermDue}`;
     default:
-            return "unknown";
+            return "";
     }
 }
 

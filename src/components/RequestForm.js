@@ -15,11 +15,11 @@ class RequestForm extends React.Component {
             filingDate: props.request ? moment(props.request.filingDate) : moment(),
             estInterimResponseDate: props.request ? moment(props.request.gotInterimResponseDate) : moment().businessAdd(5),
             gotInterimResponseDate: props.request ? moment(props.request.gotInterimResponseDate) : moment(),
-            estFinalResponseDate: props.request ? moment(props.request.estFinalResponseDate) : moment().businessAdd(35),
+            estFinalResponseDate: props.request ? moment(props.request.estFinalResponseDate) : moment().businessAdd(5).add(30,'days'),
             gotFinalResponseDate: props.request ? moment(props.request.gotFinalResponseDate) : moment(),
-            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : moment(),    
+            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : moment().businessAdd(5).add(30,'days').businessAdd(15),    
             appealFilingDate: props.request ? moment(props.request.appealFilingDate) : moment(),    
-            estFinalDetermDate: props.request ? moment(props.request.estFinalDetermDate) : moment(),    
+            estFinalDetermDate: props.request ? moment(props.request.estFinalDetermDate) : moment().businessAdd(5).add(30,'days').businessAdd(15).add(30,'days'),    
             gotFinalDetermDate: props.request ? moment(props.request.finalDetermDate) : moment(),
             details: props.request ? props.request.details : "",
             note: props.request ? props.request.note : "",
@@ -67,7 +67,7 @@ class RequestForm extends React.Component {
     // DATE - FILING
     onFilingDateChange = (filingDate) => {
         if (filingDate) { //using an If statement here to prevent user from clearing value
-            const estInterimResponseDate = moment(filingDate).businessAdd(5)
+            const estInterimResponseDate = moment(filingDate).businessAdd(5) // interim response is due on or before 5 business days
             this.setState(() => ({ 
                 filingDate,
                 estInterimResponseDate
@@ -80,7 +80,7 @@ class RequestForm extends React.Component {
     // DATE - GOT INTERIM RESPONSE 
     onGotInterimResponseDateChange = (gotInterimResponseDate) => {
         if (gotInterimResponseDate) { //using an If statement here to prevent user from clearing value
-            const estFinalResponseDate = moment(gotInterimResponseDate).businessAdd(30)
+            const estFinalResponseDate = moment(gotInterimResponseDate).add(30, 'days') // final response due on or before 30 calendar days
             this.setState(() => ({ 
                 gotInterimResponseDate,
                 estFinalResponseDate
@@ -102,7 +102,7 @@ class RequestForm extends React.Component {
     // DATE - GOT FINAL RESPONSE
     onGotFinalResponseDateChange = (gotFinalResponseDate) => {
         if (gotFinalResponseDate) { //using an If statement here to prevent user from clearing value
-            const estAppealDeadline = moment(gotFinalResponseDate).businessAdd(15)
+            const estAppealDeadline = moment(gotFinalResponseDate).businessAdd(15) // OOR appeal filing date is on or before 15 business days
             this.setState(() => ({
                 gotFinalResponseDate,
                 estAppealDeadline
@@ -115,7 +115,11 @@ class RequestForm extends React.Component {
     // DATE - USER FILED APPEAL
     onAppealFilingDateChange = (appealFilingDate) => {
         if (appealFilingDate) { //using an If statement here to prevent user from clearing value
-            this.setState(() => ({ appealFilingDate }));
+            const estFinalDetermDate = moment(appealFilingDate).add(30,'days') // OOR final determ is on or before 30 calendar days after appeal filed
+            this.setState(() => ({ 
+                appealFilingDate,
+                estFinalDetermDate
+             }));
         }
     };
     onAppealFilingDateFocusChange = ({ focused }) => {
@@ -333,11 +337,12 @@ class RequestForm extends React.Component {
                                 />
                         </div>
                     }
-                    <p>
+                    <p className="form__date-estimator">
                         {dateEstimator(this.state.status, {
                             estInterimResponseDate: this.state.estInterimResponseDate,
                             estFinalResponseDate: this.state.estFinalResponseDate,
-                            estAppealDeadline: this.state.estAppealDeadline
+                            estAppealDeadline: this.state.estAppealDeadline,
+                            estFinalDetermDate: this.state.estFinalDetermDate
                         })
                         }
                     </p>        

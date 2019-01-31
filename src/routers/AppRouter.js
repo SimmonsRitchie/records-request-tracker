@@ -6,6 +6,7 @@ import AddRequestPage from '../components/AddRequestPage';
 import EditRequestPage from '../components/EditRequestPage';
 import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';
+import RtkGuidePage from '../components/RtkGuidePage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -21,6 +22,7 @@ export const history = createHistory();
         <div>
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
+                <PrivateRoute path="/rtkguide" component={RtkGuidePage}/>
                 <PrivateRoute path="/dashboard" component={DashboardPage} />
                 <PrivateRoute path="/create" component={AddRequestPage} />
                 <PrivateRoute path="/edit/:id" component={EditRequestPage} />

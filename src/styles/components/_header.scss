@@ -3,17 +3,43 @@
 }
 
 .header__content {
-    align-items: center; //aligns items vertically
     display: flex;
-    justify-content: space-between; //distributes all leftover space between expensify title and logout button
-    padding: $s-size 0; // adds a little space at top and bottom
-}
-
-.header__title {
-    color: white;
-    text-decoration: none;
-    h1 {
-        margin: 0; // Gets rid of dumb margin
+    flex-direction: column;
+    @media (min-width: $desktop-breakpoint) {
+        align-items: center; //aligns items vertically
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; //distributes all leftover space between expensify title and logout button
+        padding: $s-size 0; // adds a little space at top and bottom
     }
 }
 
+
+.header__title {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    h1 {
+        margin: 0; // Gets rid of dumb margin
+    }    
+    @media (min-width: $desktop-breakpoint) {
+        justify-content: left
+    }
+}
+
+.header__nav {
+    display: flex;
+    justify-content: center;
+    @media (min-width: $desktop-breakpoint) {
+        justify-content: left;
+    }
+}
+
+// @media (min-width: $desktop-breakpoint) {
+//     color: white;
+//     text-decoration: none;
+//     h1 {
+//         margin: 0; // Gets rid of dumb margin
+//     }
+// }
