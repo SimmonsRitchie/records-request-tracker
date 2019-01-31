@@ -20,7 +20,7 @@ const dateEstimator = (status, {
             return `You can appeal on or before ${deadlineDue}`;
         case 'appealFiled':
             const finalDetermDue = moment(estFinalDetermDate).format('MMM D, YYYY')
-            return `OOR determination or or before ${finalDetermDue}`;
+            return `Appeal decision on or before ${finalDetermDue}`;
     default:
             return "";
     }

@@ -4,6 +4,7 @@ import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import moment from 'moment-business-days';
 import dateEstimator from '../selectors/dateEstimator'
 
+//TODO: Ensure that bussinessAdd takes into consideration government holidays.
 
 class RequestForm extends React.Component {
     constructor(props) {
@@ -337,15 +338,20 @@ class RequestForm extends React.Component {
                                 />
                         </div>
                     }
-                    <p className="form__date-estimator">
-                        {dateEstimator(this.state.status, {
-                            estInterimResponseDate: this.state.estInterimResponseDate,
-                            estFinalResponseDate: this.state.estFinalResponseDate,
-                            estAppealDeadline: this.state.estAppealDeadline,
-                            estFinalDetermDate: this.state.estFinalDetermDate
-                        })
-                        }
-                    </p>        
+                    {/*DATE ESTIMATOR */}
+                    <div className="form__date-estimator">
+                        <h3>
+                            Estimated timeline:
+                        </h3>
+                        <p>
+                            {dateEstimator(this.state.status, {
+                                estInterimResponseDate: this.state.estInterimResponseDate,
+                                estFinalResponseDate: this.state.estFinalResponseDate,
+                                estAppealDeadline: this.state.estAppealDeadline,
+                                estFinalDetermDate: this.state.estFinalDetermDate
+                            })}
+                        </p>
+                    </div>        
                 </div>
                 {/* DETAILS - static input*/}
                 <div className="form__group">

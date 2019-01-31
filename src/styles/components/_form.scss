@@ -27,7 +27,12 @@ Direct descendants:
 
 .form__date-estimator {
     color: green;
-    font-weight: bold;
+    >h3 {
+        margin-bottom: $s-size;
+    }
+    >p {
+        margin: 0;
+    }
 }
 
 .form__item-label {
