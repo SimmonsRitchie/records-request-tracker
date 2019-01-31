@@ -1,26 +1,35 @@
-import moment from 'moment'
+import moment from 'moment';
+import React from 'react';
 
-const dateEstimator = (status, {
-    estInterimResponseDate,
-    estFinalResponseDate,
-    estAppealDeadline,
-    estFinalDetermDate
-}) => {
+const dateEstimator = (status, estimatedDates) => {
+    const hStyle = {fontWeight: 'bold'}
+    
+    // Formatting dates in bold
+    Object.keys(estimatedDates).map((key) => {
+        const formattedTime = estimatedDates[key].format('MMM D, YYYY')
+        estimatedDates[key] = <span style={hStyle}>{formattedTime}</span>
+    });
+    
+    // Destructuring object
+    const {
+        estInterimResponseDate,
+        estFinalResponseDate,
+        estAppealDeadline,
+        estFinalDetermDate
+    } = estimatedDates;
+
+    // Tailoring output based on request's status
     switch (status) {
         case 'waitingInterimResponse':
-            const interimDue = moment(estInterimResponseDate).format('MMM D, YYYY')
-            return `Interim response due on or before ${interimDue}`;
+            return <span>Interim response due on or before {estInterimResponseDate}</span>;
         case 'waitingFinalResponse':
         case 'extendedFinalResponseDate':
-            const finalDue = moment(estFinalResponseDate).format('MMM D, YYYY')
-            return `Final response due on or before ${finalDue}`;
+            return <span>`Final response due on or before {estFinalResponseDate}</span>;
         case 'recordsDenied':
         case 'recordsPartiallyGranted':
-            const deadlineDue = moment(estAppealDeadline).format('MMM D, YYYY')
-            return `You can appeal on or before ${deadlineDue}`;
+            return <span>You can appeal on or before {estAppealDeadline}</span>
         case 'appealFiled':
-            const finalDetermDue = moment(estFinalDetermDate).format('MMM D, YYYY')
-            return `Appeal decision on or before ${finalDetermDue}`;
+            return <span>Appeal decision on or before {estFinalDetermDate}</span>;
     default:
             return "";
     }

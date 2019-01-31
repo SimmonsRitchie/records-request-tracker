@@ -2,7 +2,7 @@ import React from 'react';
 // import moment from 'moment'
 import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import moment from 'moment-business-days';
-import dateEstimator from '../selectors/dateEstimator'
+import DateEstimator from './DateEstimator'
 
 //TODO: Ensure that bussinessAdd takes into consideration government holidays.
 
@@ -282,7 +282,7 @@ class RequestForm extends React.Component {
                                 numberOfMonths={1} // number of months that are displayed  
                                 block={true}
                                 isOutsideRange={() => false}
-                             />                   
+                            />                   
                         </div>
                     }                
                     {/* GOT FINAL RESPONSE DATE - conditional input */}
@@ -301,7 +301,7 @@ class RequestForm extends React.Component {
                                 numberOfMonths={1} // number of months that are displayed
                                 block={true} 
                                 isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
-                             />                                 
+                            />                                 
                         </div>
                     }
                     {/* APPEAL FILED DATE - conditional input */}
@@ -340,17 +340,7 @@ class RequestForm extends React.Component {
                     }
                     {/*DATE ESTIMATOR */}
                     <div className="form__date-estimator">
-                        <h3>
-                            Estimated timeline:
-                        </h3>
-                        <p>
-                            {dateEstimator(this.state.status, {
-                                estInterimResponseDate: this.state.estInterimResponseDate,
-                                estFinalResponseDate: this.state.estFinalResponseDate,
-                                estAppealDeadline: this.state.estAppealDeadline,
-                                estFinalDetermDate: this.state.estFinalDetermDate
-                            })}
-                        </p>
+                            <DateEstimator {...this.state} />
                     </div>        
                 </div>
                 {/* DETAILS - static input*/}
