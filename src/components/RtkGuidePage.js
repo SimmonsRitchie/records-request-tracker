@@ -7,7 +7,7 @@ const RtkGuidePage = () => (
         <RequestSummary 
             pageTitle={"RTK Guide"}
         />
-        <div className="content-container">
+        <div className="content-container rtk-guide">
             <FilingDeadlines />
         </div>
     </div>

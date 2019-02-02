@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { DateRangePicker, isInclusivelyBeforeDay } from 'react-dates'
-import { setTextFilter, sortByFilingDate, sortByAlphabet, setStartDate, setEndDate } from '../actions/filters'
+import { setTextFilter, sortByFilingDate, sortByAlphabet, sortByNextDue, setStartDate, setEndDate } from '../actions/filters'
 import moment from 'moment'
 
 export class RequestsListFilters extends React.Component {
@@ -16,6 +16,8 @@ export class RequestsListFilters extends React.Component {
             this.props.sortByFilingDate();
         } else if (e.target.value === "alphabet") {
             this.props.sortByAlphabet();
+        } else if (e.target.value === "nextDue") {
+            this.props.sortByNextDue();
         }
     }
     onDatesChange = ({ startDate, endDate} ) => {
@@ -46,6 +48,7 @@ export class RequestsListFilters extends React.Component {
                             value={this.props.filters.sortBy}
                             onChange={this.onSortChange}
                         >
+                            <option value="nextDue">Response/action due</option>
                             <option value="filingDate">Filing date</option>
                             <option value="alphabet">A-Z</option>
                         </select>
@@ -79,6 +82,7 @@ const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
     sortByFilingDate: () => dispatch(sortByFilingDate()),
     sortByAlphabet: () => dispatch(sortByAlphabet()),
+    sortByNextDue: () => dispatch(sortByNextDue()),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate)),
 });

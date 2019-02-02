@@ -1,0 +1,23 @@
+
+.rtk-guide {
+    font-weight: 300;
+    color: $dark-grey;
+
+    h2 {
+        margin: $s-size 0 $s-size 0;
+        color: $grey;
+    }
+
+    h3 {
+        margin: $s-size 0 $s-size 0;
+    }
+
+    p {
+        margin: 0 0 $s-size 0;
+    };
+
+    span {
+        font-weight: 600;
+        font-style: italic;
+    }
+};

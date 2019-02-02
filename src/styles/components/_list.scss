@@ -16,6 +16,11 @@ nicer */
   }  
 }
 
+.list-body__no-items {
+    padding: $s-size;
+    font-size: $font-size-small;
+    color: $grey
+}
 
 /*
 HOVER: Below we use &:hover, a shorthand way of making a CSS change happen
@@ -58,7 +63,6 @@ when it's hovered over.
 
 .list-item__subtitle {
     color: $grey;
-    font-size: 1.4rem;
     font-size: $font-size-small;
     word-break: break-all; //Stops user from breaking display by entering in super long description
 }
@@ -70,4 +74,6 @@ when it's hovered over.
         padding-left: $s-size; // gives us some space if user enters really long item description
     }
 }
+
+
 

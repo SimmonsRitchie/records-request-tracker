@@ -26,14 +26,14 @@ export class EditRequestPage extends React.Component {
         this.props.history.push('/')
     };
     onRemove = (id) => {
-        this.props.startRemoveRequest(this.props.request.id)
+        this.props.startRemoveRequest(this.props.request.id);
         this.props.history.push('/')
     };
     render() { 
         return (
         <div>
             <RequestSummary 
-                pageTitle={"Edit request"}
+                pageTitle={"View/Edit request"}
             />
             <div className="content-container">
                 <RequestForm 

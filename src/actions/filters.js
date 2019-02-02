@@ -15,6 +15,11 @@ export const sortByAlphabet = () => ({
     type: 'SORT_BY_ALPHABET'
 });
 
+// SORT_BY_NEXT_DUE
+export const sortByNextDue = () => ({
+    type: 'SORT_BY_NEXT_DUE'
+});
+
 // SET_START_DATE
 export const setStartDate = ( startDate ) => ({
     type: 'SET_START_DATE',

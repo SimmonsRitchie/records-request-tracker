@@ -3,10 +3,10 @@ import dateEstimator from '../selectors/dateEstimator'
 
 const DateEstimator = ({status, estInterimResponseDate, estFinalResponseDate, estAppealDeadline, estFinalDetermDate}) => (
     <div>
-        <h3>
+        <p className="date-estimator__title">
         Estimated timeline:
-        </h3>
-        <p>
+        </p>
+        <p className="date-estimator__text">
             {dateEstimator(status, {
                 estInterimResponseDate,
                 estFinalResponseDate,

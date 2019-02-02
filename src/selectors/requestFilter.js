@@ -1,4 +1,5 @@
 import moment from 'moment';
+import dateComparer from './dateComparer';
 
 // GET VISIBLE requestS (FILTERING IN EFFECT!)
 // This is just a function that displays only requests based on filters variables
@@ -30,6 +31,8 @@ export default (requests, { text, sortBy, startDate, endDate}) => {
             return a.filingDate < b.filingDate ? 1 : -1
         } else if (sortBy === 'alphabet') {
             return a.description.toLowerCase() < b.description.toLowerCase() ? -1: 1
+        } else if (sortBy === 'nextDue') {
+            return dateComparer(a) < dateComparer(b) ? -1: 1
         }
     });
 }

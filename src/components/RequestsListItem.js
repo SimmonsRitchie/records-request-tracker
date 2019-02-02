@@ -1,12 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import requestStatusSummary from '../selectors/requestStatusSummary';
+import requestStatus from '../selectors/requestStatus';
 
 const RequestListItem = (props) => {
     
     // Provides a summary of status based on this.state.status
-    const currentState = requestStatusSummary({...props.request})
+    const statusSummary = requestStatus({...props.request})
 
     return (
     <Link 
@@ -22,7 +22,7 @@ const RequestListItem = (props) => {
             </span>
             <br></br>
             <span className="list-item__subtitle">
-                {currentState}
+                {statusSummary}
             </span>
         </div>
         <h3

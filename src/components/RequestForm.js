@@ -1,10 +1,73 @@
 import React from 'react';
-// import moment from 'moment'
 import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import moment from 'moment-business-days';
-import DateEstimator from './DateEstimator'
+import DateEstimator from './DateEstimator';
+import ReactTooltip from 'react-tooltip';
+
 
 //TODO: Ensure that bussinessAdd takes into consideration government holidays.
+
+/* These arrays are to cut down the size of if statements in render method. They're used for determining
+when to display certain date pickers depending on the request's status. Eg. if a user doesn't have an interim
+response yet, we don't want to display a date picker asking them when they received a final response. */
+
+const displayInterimResponseTerms = [
+    "waitingFinalResponse",
+    "extendedFinalResponseDate",
+    "recordsGranted",
+    "recordsDenied", 
+    "recordsPartiallyGranted",
+    "appealFiled",
+    "extendedFinalDetermDate",
+    "appealGranted",
+    "appealDenied",
+    "appealPartiallyGranted",
+    "waitingCourtDecision",
+    "courtGranted"
+]
+const displayGotFinalResponseTerms = [
+    "recordsGranted",
+    "recordsDenied", 
+    "recordsPartiallyGranted",
+    "appealFiled",
+    "extendedFinalDetermDate",
+    "appealGranted",
+    "appealDenied",
+    "appealPartiallyGranted",
+    "waitingCourtDecision",
+    "courtGranted"
+]
+
+const displayAppealFiledTerms = [
+    "appealFiled",
+    "extendedFinalDetermDate",
+    "appealGranted",
+    "appealDenied",
+    "appealPartiallyGranted",
+    "waitingCourtDecision",
+    "courtGranted"
+]
+
+const displayGotFinalDetermTerms = [
+    "appealGranted",
+    "appealDenied",
+    "appealPartiallyGranted",
+    "waitingCourtDecision",
+    "courtGranted"
+]
+
+const displayDateEstimatorTerms = [
+    "waitingInterimResponse",
+    "waitingFinalResponse",
+    "extendedFinalResponseDate",
+    "recordsDenied", 
+    "recordsPartiallyGranted",
+    "appealFiled",
+    "extendedFinalDetermDate",
+    "appealDenied",
+    "appealPartiallyGranted"
+]
+
 
 class RequestForm extends React.Component {
     constructor(props) {
@@ -14,14 +77,14 @@ class RequestForm extends React.Component {
             description: props.request ? props.request.description : "",
             agency: props.request ? props.request.agency : "",
             filingDate: props.request ? moment(props.request.filingDate) : moment(),
-            estInterimResponseDate: props.request ? moment(props.request.gotInterimResponseDate) : moment().businessAdd(5),
+            estInterimResponseDate: props.request ? moment(props.request.estInterimResponseDate) : moment().businessAdd(5),
             gotInterimResponseDate: props.request ? moment(props.request.gotInterimResponseDate) : moment(),
-            estFinalResponseDate: props.request ? moment(props.request.estFinalResponseDate) : moment().businessAdd(5).add(30,'days'),
+            estFinalResponseDate: props.request ? moment(props.request.estFinalResponseDate) : moment().add(30,'days'),
             gotFinalResponseDate: props.request ? moment(props.request.gotFinalResponseDate) : moment(),
-            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : moment().businessAdd(5).add(30,'days').businessAdd(15),    
+            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : moment().businessAdd(15),    
             appealFilingDate: props.request ? moment(props.request.appealFilingDate) : moment(),    
-            estFinalDetermDate: props.request ? moment(props.request.estFinalDetermDate) : moment().businessAdd(5).add(30,'days').businessAdd(15).add(30,'days'),    
-            gotFinalDetermDate: props.request ? moment(props.request.finalDetermDate) : moment(),
+            estFinalDetermDate: props.request ? moment(props.request.estFinalDetermDate) : moment().add(30,'days'),    
+            gotFinalDetermDate: props.request ? moment(props.request.gotfinalDetermDate) : moment(),
             details: props.request ? props.request.details : "",
             note: props.request ? props.request.note : "",
             denialReason: props.request ? props.request.denialReason : "",
@@ -31,6 +94,7 @@ class RequestForm extends React.Component {
             estFinalResponseCalendarFocused: false,
             gotFinalResponseCalendarFocused: false,
             appealFilingDateCalendarFocused: false,
+            estFinalDetermCalendarFocused: false,
             gotFinalDetermCalendarFocused: false,
             error: ""
         };
@@ -91,7 +155,7 @@ class RequestForm extends React.Component {
     onGotInterimResponseDateFocusChange = ({ focused }) => {
         this.setState(() => ({ gotInterimResponseDateCalendarFocused: focused }))
     }
-    // DATE - EST FINAL RESPONSE
+    // DATE - EST FINAL RESPONSE (this is called only when agency requests final response existension)
     onEstFinalResponseDateChange = (estFinalResponseDate) => {
         if (estFinalResponseDate) { //using an If statement here to prevent user from clearing value
             this.setState(() => ({ estFinalResponseDate }));
@@ -120,12 +184,30 @@ class RequestForm extends React.Component {
             this.setState(() => ({ 
                 appealFilingDate,
                 estFinalDetermDate
-             }));
+            }));
         }
     };
     onAppealFilingDateFocusChange = ({ focused }) => {
         this.setState(() => ({ appealFilingDateCalendarFocused: focused }))
     }
+        // DATE - EST FINAL RESPONSE (this is called only when agency requests final response existension)
+    onEstFinalResponseDateChange = (estFinalResponseDate) => {
+        if (estFinalResponseDate) { //using an If statement here to prevent user from clearing value
+            this.setState(() => ({ estFinalResponseDate }));
+        }
+    };
+    onEstFinalResponseFocusChange = ({ focused }) => {
+        this.setState(() => ({ estFinalResponseCalendarFocused: focused }))
+    }
+    // DATE - EST FINAL RESPONSE (this is called only when OOR requests extension for final determination)
+    onEstFinalDetermDateChange = (estFinalDetermDate) => {
+        if (estFinalDetermDate) { //using an If statement here to prevent user from clearing value
+            this.setState(() => ({ estFinalDetermDate }));
+        }
+    };
+    onEstFinalDetermFocusChange = ({ focused }) => {
+        this.setState(() => ({ estFinalDetermCalendarFocused: focused }))
+    }    
     // DATE - GOT OOR FINAL DETERMINATION
     onGotFinalDetermDateChange = (gotFinalDetermDate) => {
         if (gotFinalDetermDate) { //using an If statement here to prevent user from clearing value
@@ -173,7 +255,7 @@ class RequestForm extends React.Component {
                 gotFinalResponseDate: this.state.gotFinalResponseDate.valueOf(),
                 estAppealDeadline: this.state.estAppealDeadline.valueOf(),
                 appealFilingDate: this.state.appealFilingDate.valueOf(),
-                estFinalDetermDate: this.state.appealFilingDate.valueOf(),
+                estFinalDetermDate: this.state.estFinalDetermDate.valueOf(),
                 gotFinalDetermDate: this.state.gotFinalDetermDate.valueOf(),
                 details: this.state.details,
                 note: this.state.note,
@@ -184,8 +266,7 @@ class RequestForm extends React.Component {
 
     render() {
         return (
-            <form className="form"
-            >
+            <div className="form">
             {this.state.error &&
                 <p className="form__error">
                     {this.state.error}
@@ -203,14 +284,14 @@ class RequestForm extends React.Component {
                         <option value="recordsDenied">Request denied</option>
                         <option value="recordsGranted">Request granted</option>
                         <option value="recordsPartiallyGranted">Request partially granted</option>
-                        <option value="extendedFinalResponseDate">Agency requested final response date extension</option>
+                        <option value="extendedFinalResponseDate">Agency requests extension for final response</option>
                         <option value="appealFiled">Appeal filed</option>
-                        <option value="extendedFinalDetermDate">OOR requests extension for final determination</option> {/*TODO: Add another datepicker for revised date */}
-                        <option value="appealGranted">OOR granted access to records</option>
-                        <option value="appealDenied">OOR denied access to records</option>
-                        <option value="appealPartiallyGranted">OOR partially granted access to records</option>
-                        <option value="waitingCourtDecision">Agency/third parties appealed OOR decision</option>
-                        <option value="courtDecision">Request settled by courts</option>
+                        <option value="appealGranted">Request granted on appeal</option>
+                        <option value="appealPartiallyGranted">Request partially granted on appeal</option>
+                        <option value="appealDenied">Request denied on appeal</option>
+                        <option value="extendedFinalDetermDate">OOR requests extension for appeal decision</option> {/*TODO: Add another datepicker for revised date */}
+                        <option value="waitingCourtDecision">Agency/third parties challenge appeal decision in court</option>
+                        <option value="courtGranted">Request granted by courts</option>
                     </select>
                 </div>
                 <div className="form__basic-info">
@@ -240,8 +321,24 @@ class RequestForm extends React.Component {
                 <div className="form__date-container">
                     {/* FILING DATE - static input */}                
                     <div className="form__group">
-                        <p className="form__item-label">Date request filed:</p>
-                        <SingleDatePicker
+                        <div className="form__label-container">
+                            <p className="form__item-label">
+                                Date request filed:
+                            </p>
+                            {/*TOOLTIP*/}
+                            <span>
+                                <img
+                                    className="form__tooltip-image"
+                                    src="/images/tooltip.svg"
+                                    data-tip
+                                    data-for='filingDate'
+                                />
+                            </span>
+                            <ReactTooltip id="filingDate" type="info">
+                                <span>Note: If request was filed after 5 p.m. then enter next day as filing date.</span>
+                            </ReactTooltip>
+                        </div>
+                            <SingleDatePicker
                             date={this.state.filingDate} // Passing in value of now()
                             onDateChange={this.onFilingDateChange}
                             focused={this.state.filingDateCalendarFocused}
@@ -249,14 +346,10 @@ class RequestForm extends React.Component {
                             numberOfMonths={1} // number of months that are displayed
                             isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
                             block={true}
-                        />
+                            />
                     </div>
                     {/* INTERIM RESPONSE RECIEVED - conditional input */}
-                    {(this.state.status === "waitingFinalResponse" || this.state.status === "recordsGranted" || this.state.status === "recordsDenied"
-                    || this.state.status === "recordsPartiallyGranted" || this.state.status === "appealFiled" 
-                    || this.state.status === "appealGranted" || this.state.status === "appealDenied"
-                    || this.state.status === "appealPartiallyGranted" || this.state.status === "waitingCourtDecision"
-                    || this.state.status === "courtDecision") &&
+                    {displayInterimResponseTerms.includes(this.state.status) &&
                         <div className="form__group">
                             <p className="form__item-label">Date interim response received:</p> 
                             <SingleDatePicker 
@@ -270,10 +363,10 @@ class RequestForm extends React.Component {
                             />           
                         </div>
                     }                
-                    {/* ESTIMATED FINAL RESPONSE DATE - conditional input */}
+                    {/* EXTENDED FINAL RESPONSE DATE - conditional input */}
                     {this.state.status === "extendedFinalResponseDate" &&
                         <div className="form__group">
-                            <p className="form__item-label">Extended final response date (if given by agency):</p> 
+                            <p className="form__item-label">Extended final response date given by agency:</p> 
                             <SingleDatePicker 
                                 date={this.state.estFinalResponseDate} // Passing in value of now()
                                 onDateChange={this.onEstFinalResponseDateChange}
@@ -286,13 +379,9 @@ class RequestForm extends React.Component {
                         </div>
                     }                
                     {/* GOT FINAL RESPONSE DATE - conditional input */}
-                    {(this.state.status === "recordsGranted" || this.state.status === "recordsDenied"
-                        || this.state.status === "recordsPartiallyGranted" || this.state.status === "appealFiled" 
-                        || this.state.status === "appealGranted" || this.state.status === "appealDenied"
-                        || this.state.status === "appealPartiallyGranted" || this.state.status === "waitingCourtDecision"
-                        || this.state.status === "courtDecision") &&
+                    {displayGotFinalResponseTerms.includes(this.state.status) &&
                         <div className="form__group">
-                            <p className="form__item-label">Mailing date that agency issued final response:</p>
+                            <p className="form__item-label">Date agency issued final response:</p>
                             <SingleDatePicker 
                                 date={this.state.gotFinalResponseDate} // Passing in value of now()
                                 onDateChange={this.onGotFinalResponseDateChange}
@@ -305,11 +394,23 @@ class RequestForm extends React.Component {
                         </div>
                     }
                     {/* APPEAL FILED DATE - conditional input */}
-                    {(this.state.status === "appealFiled" || this.state.status === "appealGranted"
-                    || this.state.status === "appealDenied" || this.state.status === "appealPartiallyGranted"
-                    || this.state.status === "waitingCourtDecision" || this.state.status === "courtDecision") &&
+                    {displayAppealFiledTerms.includes(this.state.status) &&
                         <div className="form__group">
-                            <p className="form__item-label">Date appeal with OOR was filed:</p> 
+                            <div className="form__label-container">
+                                <p className="form__item-label">Date appeal with OOR was filed:</p>
+                                {/*TOOLTIP*/}
+                                <span>
+                                    <img
+                                        className="form__tooltip-image"
+                                        src="/images/tooltip.svg"
+                                        data-tip
+                                        data-for='appealFilingDate'
+                                    />
+                                </span>
+                                <ReactTooltip id="appealFilingDate" type="info">
+                                    <span>Note: Appeals filed electronically are accepted up until 11:59pm</span>
+                                </ReactTooltip> 
+                            </div>
                             <SingleDatePicker 
                                 date={this.state.appealFilingDate} // Passing in value of now()
                                 onDateChange={this.onAppealFilingDateChange}
@@ -321,10 +422,23 @@ class RequestForm extends React.Component {
                                 />                   
                         </div>
                     }
+                    {/* EXTENDED FINAL DETERMINATION DATE - conditional input */}
+                    {this.state.status === "extendedFinalDetermDate" &&
+                        <div className="form__group">
+                            <p className="form__item-label">Extended final determination date given by OOR:</p> 
+                            <SingleDatePicker 
+                                date={this.state.estFinalDetermDate} // Passing in value of now()
+                                onDateChange={this.onEstFinalDetermDateChange}
+                                focused={this.state.estFinalDetermCalendarFocused}
+                                onFocusChange={this.onEstFinalDetermFocusChange}
+                                numberOfMonths={1} // number of months that are displayed  
+                                block={true}
+                                isOutsideRange={() => false}
+                            />                   
+                        </div>
+                    }                           
                     {/* GOT OOR FINAL DETERMINATION DATE - conditional input*/}
-                    {(this.state.status === "appealGranted" || this.state.status === "appealDenied" 
-                    || this.state.status === "appealPartiallyGranted" || this.state.status === "waitingCourtDecision"
-                    || this.state.status === "courtDecision") &&
+                    {displayGotFinalDetermTerms.includes(this.state.status) &&
                         <div className="form__group">
                             <p className="form__item-label">Date OOR issued final determination: </p>
                             <SingleDatePicker 
@@ -338,10 +452,11 @@ class RequestForm extends React.Component {
                                 />
                         </div>
                     }
-                    {/*DATE ESTIMATOR */}
-                    <div className="form__date-estimator">
+                    {/*DATE ESTIMATOR - conditional - won't appear if request granted or appeal granted */}
+                    {displayDateEstimatorTerms.includes(this.state.status) &&
+                        <div className="form__date-estimator">
                             <DateEstimator {...this.state} />
-                    </div>        
+                        </div>}        
                 </div>
                 {/* DETAILS - static input*/}
                 <div className="form__group">
@@ -369,7 +484,7 @@ class RequestForm extends React.Component {
                 {(this.state.status === "recordsDenied" || this.state.status === "recordsPartiallyGranted"
                     || this.state.status === "appealFiled" || this.state.status === "appealGranted"
                     || this.state.status === "appealDenied" || this.state.status === "appealPartiallyGranted"
-                    || this.state.status === "waitingCourtDecision" || this.state.status === "courtDecision") &&
+                    || this.state.status === "waitingCourtDecision" || this.state.status === "courtGranted") &&
                     <div className="form__group">
                         <p className="form__item-label">Reason agency denied or partially denied request</p>
                         <textarea
@@ -384,7 +499,7 @@ class RequestForm extends React.Component {
                 {/* NOTES ABOUT OOR FINAL DETERMINATION DATE - conditional input*/}
                 {(this.state.status === "appealGranted" || this.state.status === "appealDenied" 
                 || this.state.status === "appealPartiallyGranted" || this.state.status === "waitingCourtDecision" 
-                || this.state.status === "courtDecision") &&
+                || this.state.status === "courtGranted") &&
                         <div className="form__group">
                             <p className="form__item-label">Notes about OOR's final determination</p>                   
                             <textarea
@@ -410,7 +525,7 @@ class RequestForm extends React.Component {
                             Remove request
                         </button>
                     </div>
-            </form>
+            </div>
         )
     }
 }

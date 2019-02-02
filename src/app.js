@@ -12,8 +12,7 @@ import { login, logout } from './actions/auth';
 import { startSetRequests } from './actions/requests'
 import LoadingPage from './components/LoadingPage'
 
-import {addRequest} from './actions/requests'
-import moment from 'moment'
+
 
 // CALLING STORE
 const store = configureStore();

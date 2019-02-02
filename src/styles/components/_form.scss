@@ -26,20 +26,35 @@ Direct descendants:
 }
 
 .form__date-estimator {
-    color: green;
-    >h3 {
-        margin-bottom: $s-size;
-    }
-    >p {
-        margin: 0;
-    }
+    padding: $s-size 0 0 0;
+    margin: 0;
 }
+
+.form__date-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
 
 .form__item-label {
     margin: 0 0 $s-size 0;
 }
 
+.form__label-container {
+    display: flex;
+    direction: row;
+    justify-content: space-between;
+}
+
 .form__error {
     margin: 0 0 $m-size 0;
     font-style: italic;
+    color: red;
+}
+
+.form__tooltip-image {
+    height: 2rem;
+    width: 2rem;
 }

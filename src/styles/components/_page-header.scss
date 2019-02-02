@@ -19,3 +19,23 @@ add expense page). It's different from the _header partial.
         font-weight: bold; // We are using span to target the dynamic parts of the summary expense page.
     }
 }
+
+.page-header__subtitle {
+    font-weight: 300;
+    margin: 0;
+}
+
+.page-header__subtitle--active {
+    color: $orange;
+    font-weight: 400; 
+}
+
+.page-header__subtitle--granted {
+    color: green;
+    font-weight: 400; 
+}
+
+.page-header__subtitle--denied {
+    color: red;
+    font-weight: 400; 
+}

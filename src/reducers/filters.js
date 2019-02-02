@@ -3,7 +3,7 @@ import moment from 'moment';
 // DEFAULT STATE
 const filtersReducerDefaultState = {
     text: "",
-    sortBy: 'filingDate',
+    sortBy: 'nextDue', // by default, sorting requests based on those where responses are closest to today's date
     startDate: moment().subtract(1, 'year'), // by default, only showing expenses between start and end of month
     endDate: moment().endOf('day')
 }
@@ -24,6 +24,11 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 sortBy: 'alphabet'
+            }
+        case 'SORT_BY_NEXT_DUE':
+            return {
+                ...state,
+                sortBy: 'nextDue'
             }
         case 'SET_START_DATE':
             return {
