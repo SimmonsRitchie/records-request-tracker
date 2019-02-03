@@ -5,7 +5,7 @@ import React from 'react';
 // <p>Estimated final response date: {moment(this.state.finalResponseDate).format('MMM. DD, YYYY')}</p>
 
 
-const RequestSummary = (props) => (
+const PageHeader = (props) => (
     <div className="page-header">
         <div className="content-container">
             <h1 className="page-header__title">
@@ -15,4 +15,4 @@ const RequestSummary = (props) => (
     </div>
 )
 
-export default RequestSummary;
+export default PageHeader;

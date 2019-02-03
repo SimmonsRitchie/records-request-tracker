@@ -11,6 +11,7 @@ Direct descendants:
     >* {
         margin-bottom: $m-size;
     }
+    margin-bottom: $s-size;
 }
 
 .form__group {
@@ -57,4 +58,8 @@ Direct descendants:
 .form__tooltip-image {
     height: 2rem;
     width: 2rem;
+}
+
+.link {
+    margin: $m-size 0 0 0;
 }

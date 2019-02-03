@@ -10,6 +10,7 @@
     line-height: 1; /* Similar to inline-block, we apply this so
     that the appearance is more button-like when applied to non-buttons */
     padding: $s-size;
+    margin: 0;
     text-decoration: none;
 }
 
@@ -23,5 +24,10 @@
 }
 
 .button--secondary {
+    background: #888888;
+}
+
+.button--remove {
+    margin: 0 0 $s-size 0;
     background: #888888;
 }

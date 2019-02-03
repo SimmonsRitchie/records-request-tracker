@@ -1,0 +1,25 @@
+.footer {
+    background-color: $off-white;
+    width: 100%;
+}
+
+.footer__content {
+    display: flex;
+    align-items: center; //aligns items vertically
+    flex-direction: row;
+    justify-content: center; //distributes all leftover space between expensify title and logout button
+    padding: $m-size 0; // adds a little space at top and bottom
+
+    a {
+        text-decoration: none;
+        color: $grey;
+    }
+
+}
+
+.footer__text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: $grey;
+    margin: 0;
+}

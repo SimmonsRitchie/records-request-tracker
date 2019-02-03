@@ -14,7 +14,7 @@ const DashboardSummary = (props) => (
             </div> :
             <div> 
                 <h1 className="page-header__title">
-                    You have filed {props.totalRequests} {props.totalRequests === 1 ? "request" : "requests"}.
+                    You have filed <span>{props.totalRequests}</span> {props.totalRequests === 1 ? "request" : "requests"}.
                 </h1>
                 <h3 className="page-header__subtitle">
                     <span className="page-header__subtitle--active">{props.totalActiveRequests}</span> active.

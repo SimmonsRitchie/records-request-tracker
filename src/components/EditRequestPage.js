@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import RequestForm from './RequestForm'
-import RequestSummary from './RequestSummary'
+import PageHeader from './PageHeader'
 import { startEditRequest, startRemoveRequest } from '../actions/requests'
+import RemovalModal from './RemovalModal'
+
 
 /* What's happening here:
 1. We pass down two props to RequestForm.
@@ -20,28 +22,48 @@ to ExpenseForm under the 'onSubmit' prop.
 export class EditRequestPage extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            modalIsOpen: false
+        };
     };
     startEditRequest = (request) => {
         this.props.startEditRequest(this.props.request.id, request)
         this.props.history.push('/')
     };
+    openModal= () => {
+        this.setState({modalIsOpen: true});
+    }
+    closeModal= () => {
+        this.setState({modalIsOpen: false});
+    }
     onRemove = (id) => {
+        this.setState({modalIsOpen: false});
         this.props.startRemoveRequest(this.props.request.id);
         this.props.history.push('/')
     };
     render() { 
         return (
         <div>
-            <RequestSummary 
+            <PageHeader 
                 pageTitle={"View/Edit request"}
             />
             <div className="content-container">
                 <RequestForm 
                     onSubmit={this.startEditRequest}
                     request={this.props.request}
-                    onRemove={this.onRemove}
                 />
+            <button
+                className="button button--remove"
+                onClick={this.openModal}
+            >
+                Remove request
+            </button>
             </div>
+            <RemovalModal
+                modalIsOpen={this.state.modalIsOpen}
+                onRemove={this.onRemove}
+                closeModal={this.closeModal}
+            />
         </div>
         )
     }

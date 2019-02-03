@@ -3,7 +3,8 @@ import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import moment from 'moment-business-days';
 import DateEstimator from './DateEstimator';
 import ReactTooltip from 'react-tooltip';
-
+import { HashLink as Link } from 'react-router-hash-link';
+import RemovalModal from './RemovalModal'
 
 //TODO: Ensure that bussinessAdd takes into consideration government holidays.
 
@@ -96,6 +97,7 @@ class RequestForm extends React.Component {
             appealFilingDateCalendarFocused: false,
             estFinalDetermCalendarFocused: false,
             gotFinalDetermCalendarFocused: false,
+            modalIsOpen: false,
             error: ""
         };
     };
@@ -111,7 +113,7 @@ class RequestForm extends React.Component {
         const description = e.target.value
         const maxLength = 60
         if (description.length > maxLength) {
-            this.setState(() => ({ error: `Max of ${maxLength} characters for description`}))
+            this.setState(() => ({ error: `Max of ${maxLength} characters for description. You can add more detail below.`}))
         } else {
             this.setState(() => ({
                 error: "", 
@@ -219,30 +221,61 @@ class RequestForm extends React.Component {
     }
     // DETAILS OF REQUEST
     onDetailsChange = (e) => {
-        const details = e.target.value
-        this.setState(() => ({ details }))
-    };
+    const details = e.target.value
+    const maxLength = 10000
+    if (details.length > maxLength) {
+        this.setState(() => ({ error: `Max of ${maxLength} characters for details.`}))
+    } else {
+        this.setState(() => ({
+            error: "", 
+            details
+        }))
+    }
+};
     // NOTE
     onNoteChange = (e) => {
-        const note = e.target.value
-        this.setState(() => ({ note }))
-    };
+    const note = e.target.value
+    const maxLength = 10000
+    if (note.length > maxLength) {
+        this.setState(() => ({ error: `Max of ${maxLength} characters for note.`}))
+    } else {
+        this.setState(() => ({
+            error: "", 
+            note
+        }))
+    }
+};    
     // DENIAL
     onDenialReasonChange = (e) => {
-        const denialReason = e.target.value
-        this.setState(() => ({ denialReason }))
-    };
-
+    const denialReason = e.target.value
+    const maxLength = 10000
+    if (denialReason.length > maxLength) {
+        this.setState(() => ({ error: `Max of ${maxLength} characters for denial reason.`}))
+    } else {
+        this.setState(() => ({
+            error: "", 
+            denialReason
+        }))
+    }
+};    
     // DETAILS OF OOR APPEAL
     onFinalDetermDetailsChange = (e) => {
-        const finalDetermDetails = e.target.value
-        this.setState(() => ({ finalDetermDetails }))
+    const finalDetermDetails = e.target.value
+    const maxLength = 10000
+    if (finalDetermDetails.length > maxLength) {
+        this.setState(() => ({ error: `Max of ${maxLength} characters for notes about final determination.`}))
+    } else {
+        this.setState(() => ({
+            error: "", 
+            finalDetermDetails
+        }))
     }
+};    
     // ON SUBMIT
     onSubmit = (e) => {
         e.preventDefault(); //Stops page from refreshing
         if (this.state.description === "" || this.state.agency === "") {
-            this.setState(() => ({ error: "Please provide a description and agency"}))
+            this.setState(() => ({ error: "Please provide a description and an agency."}))
         } else {
             this.props.onSubmit({
                 status: this.state.status,
@@ -268,7 +301,7 @@ class RequestForm extends React.Component {
         return (
             <div className="form">
             {this.state.error &&
-                <p className="form__error">
+                <p className="form__error" id="error">
                     {this.state.error}
                 </p>}
                 {/* REQUEST STATUS - static input */}                
@@ -408,7 +441,7 @@ class RequestForm extends React.Component {
                                     />
                                 </span>
                                 <ReactTooltip id="appealFilingDate" type="info">
-                                    <span>Note: Appeals filed electronically are accepted up until 11:59pm</span>
+                                    <span>Note: Appeals filed electronically are accepted by the Office of Open Records up until 11:59pm</span>
                                 </ReactTooltip> 
                             </div>
                             <SingleDatePicker 
@@ -511,20 +544,14 @@ class RequestForm extends React.Component {
                             />
                         </div>
                 }
-                    <div className="button-container">
+                    <Link className="link" to="/create#error">
                         <button
-                        className="button"
-                        onClick={this.onSubmit}
+                            className="button"
+                            onClick={this.onSubmit}
                         >
                             Save request
                         </button>
-                        <button
-                        className="button button--secondary"
-                        onClick={this.props.onRemove}
-                        >
-                            Remove request
-                        </button>
-                    </div>
+                    </Link>
             </div>
         )
     }

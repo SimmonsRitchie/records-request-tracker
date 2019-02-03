@@ -1,10 +1,10 @@
 import React from 'react';
-import RequestSummary from './RequestSummary'
+import PageHeader from './PageHeader'
 import FilingDeadlines from './FilingDeadlines'
 
 const RtkGuidePage = () => (
     <div>
-        <RequestSummary 
+        <PageHeader 
             pageTitle={"RTK Guide"}
         />
         <div className="content-container rtk-guide">

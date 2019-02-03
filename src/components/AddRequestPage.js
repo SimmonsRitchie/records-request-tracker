@@ -2,7 +2,7 @@ import React from 'react';
 import RequestForm from './RequestForm'
 import { connect } from 'react-redux'
 import { startAddRequest } from '../actions/requests'
-import RequestSummary from './RequestSummary';
+import PageHeader from './PageHeader';
 
 export class AddRequestPage extends React.Component {
     addRequest = (request) => {
@@ -12,7 +12,7 @@ export class AddRequestPage extends React.Component {
     render() {
         return (
             <div>
-                <RequestSummary
+                <PageHeader
                     pageTitle={"Add Request"}
                 />
                 <div className="content-container">
