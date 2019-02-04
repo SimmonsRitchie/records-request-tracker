@@ -6,6 +6,9 @@ import moment from 'moment-business-days';
 import DateEstimator from './DateEstimator';
 import { addBusinessAndHols } from '../selectors/businessDayCalc'
 
+/*TO DO: May need to adjust addBusinessDayCalc to account for what happens when
+filing requests on a holiday */
+
 
 /* The arrays below are created to cut down the size of if statements in render method. They're used for determining
 when to display certain date pickers depending on the request's status. Eg. if a user doesn't have an interim
