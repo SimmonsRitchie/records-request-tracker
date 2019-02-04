@@ -65,7 +65,6 @@ export class RequestsListFilters extends React.Component {
                             onFocusChange={this.onFocusChange}
                             isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
                             showClearDates={true} // allows user to hit 'x' button to choose no dates
-                            block={true}
                         />
                     </div>
                 </div>

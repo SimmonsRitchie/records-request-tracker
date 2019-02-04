@@ -27,7 +27,7 @@ export const PrivateRoute = ({
 }) => (
     <Route {...rest} component={(props) => (
         isAuthenticated ? (
-            <div>
+            <div className="main-container">
                 <Header />
                 <Component {...props}/>
                 <Footer />

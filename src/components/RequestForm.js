@@ -1,14 +1,13 @@
 import React from 'react';
 import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
-import moment from 'moment-business-days';
-import DateEstimator from './DateEstimator';
 import ReactTooltip from 'react-tooltip';
 import { HashLink as Link } from 'react-router-hash-link';
-import RemovalModal from './RemovalModal'
+import moment from 'moment-business-days';
+import DateEstimator from './DateEstimator';
+import { addBusinessAndHols } from '../selectors/businessDayCalc'
 
-//TODO: Ensure that bussinessAdd takes into consideration government holidays.
 
-/* These arrays are to cut down the size of if statements in render method. They're used for determining
+/* The arrays below are created to cut down the size of if statements in render method. They're used for determining
 when to display certain date pickers depending on the request's status. Eg. if a user doesn't have an interim
 response yet, we don't want to display a date picker asking them when they received a final response. */
 
@@ -78,11 +77,11 @@ class RequestForm extends React.Component {
             description: props.request ? props.request.description : "",
             agency: props.request ? props.request.agency : "",
             filingDate: props.request ? moment(props.request.filingDate) : moment(),
-            estInterimResponseDate: props.request ? moment(props.request.estInterimResponseDate) : moment().businessAdd(5),
+            estInterimResponseDate: props.request ? moment(props.request.estInterimResponseDate) : addBusinessAndHols(moment(),5),
             gotInterimResponseDate: props.request ? moment(props.request.gotInterimResponseDate) : moment(),
             estFinalResponseDate: props.request ? moment(props.request.estFinalResponseDate) : moment().add(30,'days'),
             gotFinalResponseDate: props.request ? moment(props.request.gotFinalResponseDate) : moment(),
-            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : moment().businessAdd(15),    
+            estAppealDeadline: props.request ? moment(props.request.estAppealDeadline) : addBusinessAndHols(moment(),15),   
             appealFilingDate: props.request ? moment(props.request.appealFilingDate) : moment(),    
             estFinalDetermDate: props.request ? moment(props.request.estFinalDetermDate) : moment().add(30,'days'),    
             gotFinalDetermDate: props.request ? moment(props.request.gotfinalDetermDate) : moment(),
@@ -134,7 +133,7 @@ class RequestForm extends React.Component {
     // DATE - FILING
     onFilingDateChange = (filingDate) => {
         if (filingDate) { //using an If statement here to prevent user from clearing value
-            const estInterimResponseDate = moment(filingDate).businessAdd(5) // interim response is due on or before 5 business days
+            const estInterimResponseDate = addBusinessAndHols(filingDate, 5) // interim response is due on or before 5 business days
             this.setState(() => ({ 
                 filingDate,
                 estInterimResponseDate
@@ -169,7 +168,7 @@ class RequestForm extends React.Component {
     // DATE - GOT FINAL RESPONSE
     onGotFinalResponseDateChange = (gotFinalResponseDate) => {
         if (gotFinalResponseDate) { //using an If statement here to prevent user from clearing value
-            const estAppealDeadline = moment(gotFinalResponseDate).businessAdd(15) // OOR appeal filing date is on or before 15 business days
+            const estAppealDeadline = addBusinessAndHols(gotFinalResponseDate, 15) // OOR appeal filing date is on or before 15 business days
             this.setState(() => ({
                 gotFinalResponseDate,
                 estAppealDeadline

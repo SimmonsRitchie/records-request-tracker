@@ -1,8 +1,8 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-business-days';
 
 
-const requestStatusSummary = ({
+const requestStatus = ({
     status,
     estInterimResponseDate,
     estFinalResponseDate,
@@ -70,4 +70,4 @@ const requestStatusSummary = ({
     }
 }
 
-export default requestStatusSummary
+export default requestStatus

@@ -24,7 +24,7 @@ const FilingDeadlines = () => (
                 </li>
             </ul>
         <p>
-            Caveat: These timelines presume the request was submitted via email directly to the RTKL officer’s inbox. If a request is mailed, the date the agency's open records officer 'receives' the request will likely vary. Also, the state Office of Open Records has held that when an agency only operates on a part-time schedule as its regular business schedule, the computation of time rules will take that into account.  However, it is typically only very small agencies where this becomes an issue.
+            Note: These timelines presume the request was submitted via email directly to the RTKL officer’s inbox. If a request is mailed, the date the agency's open records officer 'receives' the request will likely vary. Also, the state Office of Open Records has held that when an agency only operates on a part-time schedule as its regular business schedule, the computation of time rules will take that into account.  However, it is typically only very small agencies where this becomes an issue.
         </p>    
         <h3>Final response</h3>
         <p>Due on or before <span>30 calendar days</span> from the date an interim response has been issued. Therefore:</p>
@@ -46,7 +46,7 @@ const FilingDeadlines = () => (
             </li>
         </ul>
         <p>
-            Caveat: The RTKL gives requesters 15 business days from the date of the agency’s response, which is not necessarily the same as it’s mailing date. Sometimes denial letters are dated one date and not mailed for several days later.  Additionally, sometimes the agency will mail hard copies of denials rather than send them via email.  The OOR generally bases this date off the postmark, but the issue hasn’t been addressed by the courts so there’s some gray area. 
+            Note: The RTKL gives requesters 15 business days from the date of the agency’s response, which is not necessarily the same as it’s mailing date. Sometimes denial letters are dated one date and not mailed for several days later.  Additionally, sometimes the agency will mail hard copies of denials rather than send them via email.  The OOR generally bases this date off the postmark, but the issue hasn’t been addressed by the courts so there’s some gray area. 
         </p>
         <h3>Final determination</h3>
         <p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-business-days';
 import { Link } from 'react-router-dom';
 import requestStatus from '../selectors/requestStatus';
 

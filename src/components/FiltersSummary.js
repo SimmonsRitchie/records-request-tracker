@@ -7,7 +7,7 @@ const FiltersSummary = (props) => (
     <div className="content-container">
         <div className="filters-summary">
             <h3 className="page-header__title">
-                Viewing {props.visibleRequests} of {props.totalRequests} requests.
+                Viewing {props.visibleRequests} of {props.totalRequests} requests because of filters.
             </h3>
         </div>
     </div>

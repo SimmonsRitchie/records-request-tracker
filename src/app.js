@@ -12,7 +12,10 @@ import { login, logout } from './actions/auth';
 import { startSetRequests } from './actions/requests'
 import LoadingPage from './components/LoadingPage'
 
+import { addBusinessAndHols } from './selectors/businessDayCalc'
+import moment from 'moment';
 
+addBusinessAndHols("20181224",5)
 
 // CALLING STORE
 const store = configureStore();
