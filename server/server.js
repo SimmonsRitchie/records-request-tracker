@@ -1,5 +1,34 @@
 // Here we're creating our own server
 
+/*
+HEROKU DEPLOYMENT STEPS
+
+Use the following commands in terminal.
+Note that [BRACKETS] are for stuff you need to type:
+
+1) heroku login
+
+    Logs into Heroku
+
+2) heroku create [INSERT NAME OF APP]
+
+    Heroku has now been created as a remote repo in your project. 
+
+3) heroku config:set
+
+    Update your ENV variables so Firebase works correctly.
+    
+    Do this by writing the above command and then copying and pasingeach line
+    in your .env.development file. Seperate each line by a space.
+
+    If you make a mistake, just use: heroku config:unset [KEY OF DATA]. To
+    check your values, just type 'heroku config'.
+
+4) Git push heroku master
+
+    This push your app to heroku
+*/
+
 // IMPORTS
 const path = require('path')
 const express = require('express'); // Require is how we import in node.js
