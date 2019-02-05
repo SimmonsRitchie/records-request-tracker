@@ -26,7 +26,7 @@ const RequestListItem = (props) => {
             </span>
         </div>
         <h3
-            className="list-item__data">
+            className="list-item__data show-for-desktop">
             {props.request.agency}
         </h3>
 
