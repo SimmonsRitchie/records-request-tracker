@@ -1,16 +1,23 @@
+/* This is a function that returns a small piece of text, wrapped in JSX, regarding when
+filing responses/actions are due. Text is determined based on estimated dates (eg. estInterimResponseDate) and status.
+
+This function has been broken out into a seperate file so that it's reuseable.
+*/
+
 import moment from 'moment';
 import React from 'react';
 
-const dateEstimator = (status, estimatedDates) => {
-    // const hStyle = {fontWeight: 'bold'}
+
+
+const dateEstimateText = (status, estimatedDates) => {
     
-    // Formatting dates in readable format, applying styles
+    // Looping through estimatedDates object, formatting each date so they're more readable and applying styles
     Object.keys(estimatedDates).map((key) => {
         const formattedTime = estimatedDates[key].format('MMM D, YYYY')
         estimatedDates[key] = <span className="date-estimator__date">{formattedTime}</span>
     });
     
-    // Destructuring object
+    // Destructuring estimatedDates object so we can get estimated dates for each status
     const {
         estInterimResponseDate,
         estFinalResponseDate,
@@ -39,4 +46,4 @@ const dateEstimator = (status, estimatedDates) => {
 }
 
 
-export default dateEstimator;
+export default dateEstimateText;

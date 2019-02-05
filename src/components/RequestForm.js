@@ -66,9 +66,7 @@ const displayDateEstimatorTerms = [
     "recordsDenied", 
     "recordsPartiallyGranted",
     "appealFiled",
-    "extendedFinalDetermDate",
-    "appealDenied",
-    "appealPartiallyGranted"
+    "extendedFinalDetermDate"
 ]
 
 
@@ -489,9 +487,8 @@ class RequestForm extends React.Component {
                     }
                     {/*DATE ESTIMATOR - conditional - won't appear if request granted or appeal granted */}
                     {displayDateEstimatorTerms.includes(this.state.status) &&
-                        <div className="form__date-estimator">
                             <DateEstimator {...this.state} />
-                        </div>}        
+                        }        
                 </div>
                 {/* DETAILS - static input*/}
                 <div className="form__group">
@@ -521,7 +518,7 @@ class RequestForm extends React.Component {
                     || this.state.status === "appealDenied" || this.state.status === "appealPartiallyGranted"
                     || this.state.status === "waitingCourtDecision" || this.state.status === "courtGranted") &&
                     <div className="form__group">
-                        <p className="form__item-label">Reason agency denied or partially denied request</p>
+                        <p className="form__item-label">Reason agency denied or partially denied request:</p>
                         <textarea
                             className="textarea"
                             type="text"
@@ -536,7 +533,7 @@ class RequestForm extends React.Component {
                 || this.state.status === "appealPartiallyGranted" || this.state.status === "waitingCourtDecision" 
                 || this.state.status === "courtGranted") &&
                         <div className="form__group">
-                            <p className="form__item-label">Notes about OOR's final determination</p>                   
+                            <p className="form__item-label">Notes about OOR's final determination:</p>                   
                             <textarea
                                 className="textarea"
                                 type="text"

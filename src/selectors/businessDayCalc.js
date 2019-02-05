@@ -17,34 +17,61 @@ Custom holidays could be added but it wasn't easy to add holidays that fall on d
 
 /\/\/ API /\/\/ 
 
-addBusinessAndHols(dateToCheck, businessDaysToAdd)
+addBusinessAndHols(dateToCheck, businessDaysToAdd, options)
 
-Takes two args: a date as ISO format (ie. '2009-12-23') or as a moment object, and number of business days.
-Returns a moment date object with the new date.
+    Takes two required args: a date as ISO format (ie. '2009-12-23') or as a moment object, and number of business days.
+    Returns a moment date object with the new date. It also takes a third optional argument, 'options'.
+    If given string "verbose", the function will return an object with the following items:
+
+            startDate: date that function started counting from, ie. dateToCheck
+            businessDaysToAdd: number of days that function added to dateToCheck
+            endDate: final date calculated based on business days added
+            countOfHols: number of holidays between startDate and endDate
+            countOfNonBusinessDays: number of non business days between startDate and endDate
+            countOfBusinessDays: number of business days between startDate and endDate
+            calendarDayDiff: number of calendar days between startDate and endDate
+        }
 
 checkIfHoliday(dateToCheck)
 
-Takes a single argument: An ISO formatted date or a date object. It returns true or false based on
-whether the date matches a list of holiday objects included in the function. To add or remove holidays,
-simply update the list included in this function.
-*/
+    Takes a single argument: An ISO formatted date or a date object. It returns true or false based on
+    whether the date matches a list of holiday objects included in the function. To add or remove holidays,
+    simply update the list included in this function.
+    */
 
 import moment from 'moment-business-days';
 
 
-export const addBusinessAndHols = (dateToCheck, businessDaysToAdd) => {
+export const addBusinessAndHols = (dateToCheck, businessDaysToAdd, options) => {
     let countOfBusinessDays = 0
-    dateToCheck = moment(dateToCheck)
-    while (countOfBusinessDays !== businessDaysToAdd) {
-        dateToCheck.add(1,'day')
-        if (checkIfHoliday(dateToCheck)) {
+    let countOfHols = 0 // counter, result only return if verbose option is chosen
+    let countOfNonBusinessDays = 0 // counter, result only return if verbose option is chosen
+    let resultDate = moment(dateToCheck) // Converting dateToCheck date into moment object
+    while (countOfBusinessDays !== businessDaysToAdd) { // Looping through each date and checking whether it's either a holiday or business day
+        resultDate.add(1,'day')
+        if (checkIfHoliday(resultDate)) {
+            countOfHols += 1
         } else {
-            if (dateToCheck.isBusinessDay()) {
+            if (resultDate.isBusinessDay()) {
                 countOfBusinessDays += 1
+            } else {
+                countOfNonBusinessDays += 1
             }
         }
     }
-    return dateToCheck
+    if (options === "verbose") { // If 'verbose' flag is chosen as option, then we return an object with details about calculation
+        return {
+            startDate: moment(dateToCheck), // Initial date
+            businessDaysToAdd,
+            endDate: resultDate, // Final date calculated based on business days added
+            countOfHols, // number of holidays between dateToCheck and resultDate
+            countOfNonBusinessDays,
+            countOfBusinessDays,
+            calendarDayDiff: resultDate.diff(dateToCheck, 'days')
+        }
+    } else { // If no flags are chosen, we just return the resulting date after business days are added.
+        return resultDate
+    }
 }
 
 
