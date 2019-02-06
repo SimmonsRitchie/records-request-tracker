@@ -1,0 +1,51 @@
+
+.login__button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    > button {
+        margin: 0 0 $s-size 0;
+    }
+    > input {
+        margin: 0 0 $s-size 0;
+    }
+}
+
+.login__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.login__arrow-container {
+    display: flex;
+    align-items: flex-start
+}
+
+.login__back {
+    height: 2rem;
+    margin: $s-size;
+}
+
+
+
+// LOGIN START 
+.login-start-enter {
+    opacity: 0.01;
+}
+
+.login-start-enter.login-start-enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear;
+}
+
+.login-start-leave {
+    opacity: 1;
+}
+
+.login-start-leave.login-start-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms linear;
+}
