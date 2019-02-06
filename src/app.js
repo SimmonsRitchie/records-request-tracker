@@ -16,6 +16,8 @@ import LoadingPage from './components/LoadingPage'
 
 // Adding a new feature!
 
+// Adding a second, additional feature.
+
 // CALLING STORE
 const store = configureStore();
 
