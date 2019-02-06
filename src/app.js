@@ -14,6 +14,7 @@ import LoadingPage from './components/LoadingPage'
 
 // Making some small changes to test out git branch.
 
+// Adding a new feature!
 
 // CALLING STORE
 const store = configureStore();
