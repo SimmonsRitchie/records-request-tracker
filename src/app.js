@@ -18,6 +18,8 @@ import LoadingPage from './components/LoadingPage'
 
 // Adding a second, additional feature.
 // Added something extra to this new feature.
+// Added a final tweak to release version 0.1.0
+
 
 // CALLING STORE
 const store = configureStore();
