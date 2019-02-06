@@ -12,6 +12,9 @@ import { login, logout } from './actions/auth';
 import { startSetRequests } from './actions/requests'
 import LoadingPage from './components/LoadingPage'
 
+// Making some small changes to test out git branch.
+
+
 // CALLING STORE
 const store = configureStore();
 
