@@ -1,0 +1,1377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render RequestForm correctly 1`] = `
+<div
+  className="form"
+>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Request status:
+    </p>
+    <select
+      className="select"
+      onChange={[Function]}
+      value="waitingInterimResponse"
+    >
+      <option
+        value="waitingInterimResponse"
+      >
+        Request filed
+      </option>
+      <option
+        value="waitingFinalResponse"
+      >
+        Interim response received
+      </option>
+      <option
+        value="recordsDenied"
+      >
+        Request denied
+      </option>
+      <option
+        value="recordsGranted"
+      >
+        Request granted
+      </option>
+      <option
+        value="recordsPartiallyGranted"
+      >
+        Request partially granted
+      </option>
+      <option
+        value="extendedFinalResponseDate"
+      >
+        Agency requests extension for final response
+      </option>
+      <option
+        value="appealFiled"
+      >
+        Appeal filed
+      </option>
+      <option
+        value="appealGranted"
+      >
+        Request granted on appeal
+      </option>
+      <option
+        value="appealPartiallyGranted"
+      >
+        Request partially granted on appeal
+      </option>
+      <option
+        value="appealDenied"
+      >
+        Request denied on appeal
+      </option>
+      <option
+        value="extendedFinalDetermDate"
+      >
+        OOR requests extension for appeal decision
+      </option>
+       
+      <option
+        value="waitingCourtDecision"
+      >
+        Agency/third parties challenge appeal decision in court
+      </option>
+      <option
+        value="courtGranted"
+      >
+        Request granted by courts
+      </option>
+    </select>
+  </div>
+  <div
+    className="form__basic-info"
+  >
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Description of request:
+      </p>
+      <input
+        autoFocus={true}
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Agency:
+      </p>
+      <input
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="form__date-container"
+  >
+    <div
+      className="form__group"
+    >
+      <div
+        className="form__label-container"
+      >
+        <p
+          className="form__item-label"
+        >
+          Date request filed:
+        </p>
+        <span>
+          <img
+            className="form__tooltip-image"
+            data-for="filingDate"
+            data-tip={true}
+            src="/images/tooltip.svg"
+          />
+        </span>
+        <ReactTooltip
+          id="filingDate"
+          insecure={true}
+          resizeHide={true}
+          type="info"
+          wrapper="div"
+        >
+          <span>
+            Note: If request was filed after 5 p.m. then enter next day as filing date.
+          </span>
+        </ReactTooltip>
+      </div>
+      <withStyles(SingleDatePicker)
+        anchorDirection="left"
+        appendToBody={false}
+        block={true}
+        calendarInfoPosition="bottom"
+        customCloseIcon={null}
+        customInputIcon={null}
+        date={"1970-01-01T00:00:00.000Z"}
+        daySize={39}
+        disableScroll={false}
+        disabled={false}
+        displayFormat={[Function]}
+        enableOutsideDays={false}
+        firstDayOfWeek={null}
+        focused={false}
+        hideKeyboardShortcutsPanel={false}
+        horizontalMargin={0}
+        horizontalMonthPadding={13}
+        id="date"
+        initialVisibleMonth={null}
+        inputIconPosition="before"
+        isDayBlocked={[Function]}
+        isDayHighlighted={[Function]}
+        isOutsideRange={[Function]}
+        isRTL={false}
+        keepFocusOnInput={false}
+        keepOpenOnDateSelect={false}
+        monthFormat="MMMM YYYY"
+        navNext={null}
+        navPrev={null}
+        noBorder={false}
+        numberOfMonths={1}
+        onClose={[Function]}
+        onDateChange={[Function]}
+        onFocusChange={[Function]}
+        onNextMonthClick={[Function]}
+        onPrevMonthClick={[Function]}
+        openDirection="down"
+        orientation="horizontal"
+        phrases={
+          Object {
+            "calendarLabel": "Calendar",
+            "chooseAvailableDate": [Function],
+            "clearDate": "Clear Date",
+            "closeDatePicker": "Close",
+            "dateIsSelected": [Function],
+            "dateIsUnavailable": [Function],
+            "enterKey": "Enter key",
+            "escape": "Escape key",
+            "hideKeyboardShortcutsPanel": "Close the shortcuts panel.",
+            "homeEnd": "Home and end keys",
+            "jumpToNextMonth": "Move forward to switch to the next month.",
+            "jumpToPrevMonth": "Move backward to switch to the previous month.",
+            "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
+            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+            "keyboardShortcuts": "Keyboard Shortcuts",
+            "leftArrowRightArrow": "Right and left arrow keys",
+            "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
+            "moveFocusByOneMonth": "Switch months.",
+            "moveFocusByOneWeek": "Move backward (up) and forward (down) by one week.",
+            "moveFocustoStartAndEndOfWeek": "Go to the first or last day of a week.",
+            "openThisPanel": "Open this panel.",
+            "pageUpPageDown": "page up and page down keys",
+            "questionMark": "Question mark",
+            "returnFocusToInput": "Return to the date input field.",
+            "selectFocusedDate": "Select the date in focus.",
+            "showKeyboardShortcutsPanel": "Open the keyboard shortcuts panel.",
+            "upArrowDownArrow": "up and down arrow keys",
+          }
+        }
+        placeholder="Date"
+        readOnly={false}
+        regular={false}
+        renderCalendarInfo={null}
+        renderDayContents={null}
+        renderMonthElement={null}
+        renderMonthText={null}
+        reopenPickerOnClearDate={false}
+        required={false}
+        screenReaderInputMessage=""
+        showClearDate={false}
+        showDefaultInputIcon={false}
+        small={false}
+        verticalHeight={null}
+        verticalSpacing={22}
+        weekDayFormat="dd"
+        withFullScreenPortal={false}
+        withPortal={false}
+      />
+    </div>
+    <DateEstimator
+      agency=""
+      appealFilingDate={"1970-01-01T00:00:00.000Z"}
+      appealFilingDateCalendarFocused={false}
+      denialReason=""
+      description=""
+      details=""
+      error=""
+      estAppealDeadline={"1970-01-24T00:00:00.000Z"}
+      estFinalDetermCalendarFocused={false}
+      estFinalDetermDate={"1970-01-31T00:00:00.000Z"}
+      estFinalResponseCalendarFocused={false}
+      estFinalResponseDate={"1970-01-31T00:00:00.000Z"}
+      estInterimResponseDate={"1970-01-09T00:00:00.000Z"}
+      filingDate={"1970-01-01T00:00:00.000Z"}
+      filingDateCalendarFocused={false}
+      finalDetermDetails=""
+      gotFinalDetermCalendarFocused={false}
+      gotFinalDetermDate={"1970-01-01T00:00:00.000Z"}
+      gotFinalResponseCalendarFocused={false}
+      gotFinalResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDateCalendarFocused={false}
+      modalIsOpen={false}
+      note=""
+      status="waitingInterimResponse"
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Full details of request:
+    </p>
+    <textarea
+      className="textarea"
+      name="details"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Notes:
+    </p>
+    <textarea
+      className="textarea"
+      name="note"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <HashLink
+    className="link"
+    to="/create#error"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save request
+    </button>
+  </HashLink>
+</div>
+`;
+
+exports[`Should render RequestForm with request data 1`] = `
+<div
+  className="form"
+>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Request status:
+    </p>
+    <select
+      className="select"
+      onChange={[Function]}
+      value="waitingFinalResponse"
+    >
+      <option
+        value="waitingInterimResponse"
+      >
+        Request filed
+      </option>
+      <option
+        value="waitingFinalResponse"
+      >
+        Interim response received
+      </option>
+      <option
+        value="recordsDenied"
+      >
+        Request denied
+      </option>
+      <option
+        value="recordsGranted"
+      >
+        Request granted
+      </option>
+      <option
+        value="recordsPartiallyGranted"
+      >
+        Request partially granted
+      </option>
+      <option
+        value="extendedFinalResponseDate"
+      >
+        Agency requests extension for final response
+      </option>
+      <option
+        value="appealFiled"
+      >
+        Appeal filed
+      </option>
+      <option
+        value="appealGranted"
+      >
+        Request granted on appeal
+      </option>
+      <option
+        value="appealPartiallyGranted"
+      >
+        Request partially granted on appeal
+      </option>
+      <option
+        value="appealDenied"
+      >
+        Request denied on appeal
+      </option>
+      <option
+        value="extendedFinalDetermDate"
+      >
+        OOR requests extension for appeal decision
+      </option>
+       
+      <option
+        value="waitingCourtDecision"
+      >
+        Agency/third parties challenge appeal decision in court
+      </option>
+      <option
+        value="courtGranted"
+      >
+        Request granted by courts
+      </option>
+    </select>
+  </div>
+  <div
+    className="form__basic-info"
+  >
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Description of request:
+      </p>
+      <input
+        autoFocus={true}
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value="Request for campaign finance data"
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Agency:
+      </p>
+      <input
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value="Dept of State"
+      />
+    </div>
+  </div>
+  <div
+    className="form__date-container"
+  >
+    <div
+      className="form__group"
+    >
+      <div
+        className="form__label-container"
+      >
+        <p
+          className="form__item-label"
+        >
+          Date request filed:
+        </p>
+        <span>
+          <img
+            className="form__tooltip-image"
+            data-for="filingDate"
+            data-tip={true}
+            src="/images/tooltip.svg"
+          />
+        </span>
+        <ReactTooltip
+          id="filingDate"
+          insecure={true}
+          resizeHide={true}
+          type="info"
+          wrapper="div"
+        >
+          <span>
+            Note: If request was filed after 5 p.m. then enter next day as filing date.
+          </span>
+        </ReactTooltip>
+      </div>
+      <withStyles(SingleDatePicker)
+        anchorDirection="left"
+        appendToBody={false}
+        block={true}
+        calendarInfoPosition="bottom"
+        customCloseIcon={null}
+        customInputIcon={null}
+        date={"2019-02-02T05:00:00.000Z"}
+        daySize={39}
+        disableScroll={false}
+        disabled={false}
+        displayFormat={[Function]}
+        enableOutsideDays={false}
+        firstDayOfWeek={null}
+        focused={false}
+        hideKeyboardShortcutsPanel={false}
+        horizontalMargin={0}
+        horizontalMonthPadding={13}
+        id="date"
+        initialVisibleMonth={null}
+        inputIconPosition="before"
+        isDayBlocked={[Function]}
+        isDayHighlighted={[Function]}
+        isOutsideRange={[Function]}
+        isRTL={false}
+        keepFocusOnInput={false}
+        keepOpenOnDateSelect={false}
+        monthFormat="MMMM YYYY"
+        navNext={null}
+        navPrev={null}
+        noBorder={false}
+        numberOfMonths={1}
+        onClose={[Function]}
+        onDateChange={[Function]}
+        onFocusChange={[Function]}
+        onNextMonthClick={[Function]}
+        onPrevMonthClick={[Function]}
+        openDirection="down"
+        orientation="horizontal"
+        phrases={
+          Object {
+            "calendarLabel": "Calendar",
+            "chooseAvailableDate": [Function],
+            "clearDate": "Clear Date",
+            "closeDatePicker": "Close",
+            "dateIsSelected": [Function],
+            "dateIsUnavailable": [Function],
+            "enterKey": "Enter key",
+            "escape": "Escape key",
+            "hideKeyboardShortcutsPanel": "Close the shortcuts panel.",
+            "homeEnd": "Home and end keys",
+            "jumpToNextMonth": "Move forward to switch to the next month.",
+            "jumpToPrevMonth": "Move backward to switch to the previous month.",
+            "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
+            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+            "keyboardShortcuts": "Keyboard Shortcuts",
+            "leftArrowRightArrow": "Right and left arrow keys",
+            "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
+            "moveFocusByOneMonth": "Switch months.",
+            "moveFocusByOneWeek": "Move backward (up) and forward (down) by one week.",
+            "moveFocustoStartAndEndOfWeek": "Go to the first or last day of a week.",
+            "openThisPanel": "Open this panel.",
+            "pageUpPageDown": "page up and page down keys",
+            "questionMark": "Question mark",
+            "returnFocusToInput": "Return to the date input field.",
+            "selectFocusedDate": "Select the date in focus.",
+            "showKeyboardShortcutsPanel": "Open the keyboard shortcuts panel.",
+            "upArrowDownArrow": "up and down arrow keys",
+          }
+        }
+        placeholder="Date"
+        readOnly={false}
+        regular={false}
+        renderCalendarInfo={null}
+        renderDayContents={null}
+        renderMonthElement={null}
+        renderMonthText={null}
+        reopenPickerOnClearDate={false}
+        required={false}
+        screenReaderInputMessage=""
+        showClearDate={false}
+        showDefaultInputIcon={false}
+        small={false}
+        verticalHeight={null}
+        verticalSpacing={22}
+        weekDayFormat="dd"
+        withFullScreenPortal={false}
+        withPortal={false}
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Date interim response received:
+      </p>
+      <withStyles(SingleDatePicker)
+        anchorDirection="left"
+        appendToBody={false}
+        block={true}
+        calendarInfoPosition="bottom"
+        customCloseIcon={null}
+        customInputIcon={null}
+        date={"2019-02-08T05:00:00.000Z"}
+        daySize={39}
+        disableScroll={false}
+        disabled={false}
+        displayFormat={[Function]}
+        enableOutsideDays={false}
+        firstDayOfWeek={null}
+        focused={false}
+        hideKeyboardShortcutsPanel={false}
+        horizontalMargin={0}
+        horizontalMonthPadding={13}
+        id="date"
+        initialVisibleMonth={null}
+        inputIconPosition="before"
+        isDayBlocked={[Function]}
+        isDayHighlighted={[Function]}
+        isOutsideRange={[Function]}
+        isRTL={false}
+        keepFocusOnInput={false}
+        keepOpenOnDateSelect={false}
+        monthFormat="MMMM YYYY"
+        navNext={null}
+        navPrev={null}
+        noBorder={false}
+        numberOfMonths={1}
+        onClose={[Function]}
+        onDateChange={[Function]}
+        onFocusChange={[Function]}
+        onNextMonthClick={[Function]}
+        onPrevMonthClick={[Function]}
+        openDirection="down"
+        orientation="horizontal"
+        phrases={
+          Object {
+            "calendarLabel": "Calendar",
+            "chooseAvailableDate": [Function],
+            "clearDate": "Clear Date",
+            "closeDatePicker": "Close",
+            "dateIsSelected": [Function],
+            "dateIsUnavailable": [Function],
+            "enterKey": "Enter key",
+            "escape": "Escape key",
+            "hideKeyboardShortcutsPanel": "Close the shortcuts panel.",
+            "homeEnd": "Home and end keys",
+            "jumpToNextMonth": "Move forward to switch to the next month.",
+            "jumpToPrevMonth": "Move backward to switch to the previous month.",
+            "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
+            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+            "keyboardShortcuts": "Keyboard Shortcuts",
+            "leftArrowRightArrow": "Right and left arrow keys",
+            "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
+            "moveFocusByOneMonth": "Switch months.",
+            "moveFocusByOneWeek": "Move backward (up) and forward (down) by one week.",
+            "moveFocustoStartAndEndOfWeek": "Go to the first or last day of a week.",
+            "openThisPanel": "Open this panel.",
+            "pageUpPageDown": "page up and page down keys",
+            "questionMark": "Question mark",
+            "returnFocusToInput": "Return to the date input field.",
+            "selectFocusedDate": "Select the date in focus.",
+            "showKeyboardShortcutsPanel": "Open the keyboard shortcuts panel.",
+            "upArrowDownArrow": "up and down arrow keys",
+          }
+        }
+        placeholder="Date"
+        readOnly={false}
+        regular={false}
+        renderCalendarInfo={null}
+        renderDayContents={null}
+        renderMonthElement={null}
+        renderMonthText={null}
+        reopenPickerOnClearDate={false}
+        required={false}
+        screenReaderInputMessage=""
+        showClearDate={false}
+        showDefaultInputIcon={false}
+        small={false}
+        verticalHeight={null}
+        verticalSpacing={22}
+        weekDayFormat="dd"
+        withFullScreenPortal={false}
+        withPortal={false}
+      />
+    </div>
+    <DateEstimator
+      agency="Dept of State"
+      appealFilingDate={"1970-01-01T00:00:00.000Z"}
+      appealFilingDateCalendarFocused={false}
+      denialReason=""
+      description="Request for campaign finance data"
+      details="Campaign donations in 2018 election"
+      error=""
+      estAppealDeadline={"1970-01-01T00:00:00.000Z"}
+      estFinalDetermCalendarFocused={false}
+      estFinalDetermDate={"1970-01-01T00:00:00.000Z"}
+      estFinalResponseCalendarFocused={false}
+      estFinalResponseDate={"2019-03-04T05:00:00.000Z"}
+      estInterimResponseDate={"2019-02-08T05:00:00.000Z"}
+      filingDate={"2019-02-02T05:00:00.000Z"}
+      filingDateCalendarFocused={false}
+      finalDetermDetails=""
+      gotFinalDetermCalendarFocused={false}
+      gotFinalDetermDate={"1970-01-01T00:00:00.000Z"}
+      gotFinalResponseCalendarFocused={false}
+      gotFinalResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDate={"2019-02-08T05:00:00.000Z"}
+      gotInterimResponseDateCalendarFocused={false}
+      modalIsOpen={false}
+      note="Had informal discussion about these docs with press secretary"
+      status="waitingFinalResponse"
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Full details of request:
+    </p>
+    <textarea
+      className="textarea"
+      name="details"
+      onChange={[Function]}
+      type="text"
+      value="Campaign donations in 2018 election"
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Notes:
+    </p>
+    <textarea
+      className="textarea"
+      name="note"
+      onChange={[Function]}
+      type="text"
+      value="Had informal discussion about these docs with press secretary"
+    />
+  </div>
+  <HashLink
+    className="link"
+    to="/create#error"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save request
+    </button>
+  </HashLink>
+</div>
+`;
+
+exports[`Should render error for invalid form submission 1`] = `
+<div
+  className="form"
+>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Request status:
+    </p>
+    <select
+      className="select"
+      onChange={[Function]}
+      value="waitingInterimResponse"
+    >
+      <option
+        value="waitingInterimResponse"
+      >
+        Request filed
+      </option>
+      <option
+        value="waitingFinalResponse"
+      >
+        Interim response received
+      </option>
+      <option
+        value="recordsDenied"
+      >
+        Request denied
+      </option>
+      <option
+        value="recordsGranted"
+      >
+        Request granted
+      </option>
+      <option
+        value="recordsPartiallyGranted"
+      >
+        Request partially granted
+      </option>
+      <option
+        value="extendedFinalResponseDate"
+      >
+        Agency requests extension for final response
+      </option>
+      <option
+        value="appealFiled"
+      >
+        Appeal filed
+      </option>
+      <option
+        value="appealGranted"
+      >
+        Request granted on appeal
+      </option>
+      <option
+        value="appealPartiallyGranted"
+      >
+        Request partially granted on appeal
+      </option>
+      <option
+        value="appealDenied"
+      >
+        Request denied on appeal
+      </option>
+      <option
+        value="extendedFinalDetermDate"
+      >
+        OOR requests extension for appeal decision
+      </option>
+       
+      <option
+        value="waitingCourtDecision"
+      >
+        Agency/third parties challenge appeal decision in court
+      </option>
+      <option
+        value="courtGranted"
+      >
+        Request granted by courts
+      </option>
+    </select>
+  </div>
+  <div
+    className="form__basic-info"
+  >
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Description of request:
+      </p>
+      <input
+        autoFocus={true}
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Agency:
+      </p>
+      <input
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="form__date-container"
+  >
+    <div
+      className="form__group"
+    >
+      <div
+        className="form__label-container"
+      >
+        <p
+          className="form__item-label"
+        >
+          Date request filed:
+        </p>
+        <span>
+          <img
+            className="form__tooltip-image"
+            data-for="filingDate"
+            data-tip={true}
+            src="/images/tooltip.svg"
+          />
+        </span>
+        <ReactTooltip
+          id="filingDate"
+          insecure={true}
+          resizeHide={true}
+          type="info"
+          wrapper="div"
+        >
+          <span>
+            Note: If request was filed after 5 p.m. then enter next day as filing date.
+          </span>
+        </ReactTooltip>
+      </div>
+      <withStyles(SingleDatePicker)
+        anchorDirection="left"
+        appendToBody={false}
+        block={true}
+        calendarInfoPosition="bottom"
+        customCloseIcon={null}
+        customInputIcon={null}
+        date={"1970-01-01T00:00:00.000Z"}
+        daySize={39}
+        disableScroll={false}
+        disabled={false}
+        displayFormat={[Function]}
+        enableOutsideDays={false}
+        firstDayOfWeek={null}
+        focused={false}
+        hideKeyboardShortcutsPanel={false}
+        horizontalMargin={0}
+        horizontalMonthPadding={13}
+        id="date"
+        initialVisibleMonth={null}
+        inputIconPosition="before"
+        isDayBlocked={[Function]}
+        isDayHighlighted={[Function]}
+        isOutsideRange={[Function]}
+        isRTL={false}
+        keepFocusOnInput={false}
+        keepOpenOnDateSelect={false}
+        monthFormat="MMMM YYYY"
+        navNext={null}
+        navPrev={null}
+        noBorder={false}
+        numberOfMonths={1}
+        onClose={[Function]}
+        onDateChange={[Function]}
+        onFocusChange={[Function]}
+        onNextMonthClick={[Function]}
+        onPrevMonthClick={[Function]}
+        openDirection="down"
+        orientation="horizontal"
+        phrases={
+          Object {
+            "calendarLabel": "Calendar",
+            "chooseAvailableDate": [Function],
+            "clearDate": "Clear Date",
+            "closeDatePicker": "Close",
+            "dateIsSelected": [Function],
+            "dateIsUnavailable": [Function],
+            "enterKey": "Enter key",
+            "escape": "Escape key",
+            "hideKeyboardShortcutsPanel": "Close the shortcuts panel.",
+            "homeEnd": "Home and end keys",
+            "jumpToNextMonth": "Move forward to switch to the next month.",
+            "jumpToPrevMonth": "Move backward to switch to the previous month.",
+            "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
+            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+            "keyboardShortcuts": "Keyboard Shortcuts",
+            "leftArrowRightArrow": "Right and left arrow keys",
+            "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
+            "moveFocusByOneMonth": "Switch months.",
+            "moveFocusByOneWeek": "Move backward (up) and forward (down) by one week.",
+            "moveFocustoStartAndEndOfWeek": "Go to the first or last day of a week.",
+            "openThisPanel": "Open this panel.",
+            "pageUpPageDown": "page up and page down keys",
+            "questionMark": "Question mark",
+            "returnFocusToInput": "Return to the date input field.",
+            "selectFocusedDate": "Select the date in focus.",
+            "showKeyboardShortcutsPanel": "Open the keyboard shortcuts panel.",
+            "upArrowDownArrow": "up and down arrow keys",
+          }
+        }
+        placeholder="Date"
+        readOnly={false}
+        regular={false}
+        renderCalendarInfo={null}
+        renderDayContents={null}
+        renderMonthElement={null}
+        renderMonthText={null}
+        reopenPickerOnClearDate={false}
+        required={false}
+        screenReaderInputMessage=""
+        showClearDate={false}
+        showDefaultInputIcon={false}
+        small={false}
+        verticalHeight={null}
+        verticalSpacing={22}
+        weekDayFormat="dd"
+        withFullScreenPortal={false}
+        withPortal={false}
+      />
+    </div>
+    <DateEstimator
+      agency=""
+      appealFilingDate={"1970-01-01T00:00:00.000Z"}
+      appealFilingDateCalendarFocused={false}
+      denialReason=""
+      description=""
+      details=""
+      error=""
+      estAppealDeadline={"1970-01-24T00:00:00.000Z"}
+      estFinalDetermCalendarFocused={false}
+      estFinalDetermDate={"1970-01-31T00:00:00.000Z"}
+      estFinalResponseCalendarFocused={false}
+      estFinalResponseDate={"1970-01-31T00:00:00.000Z"}
+      estInterimResponseDate={"1970-01-09T00:00:00.000Z"}
+      filingDate={"1970-01-01T00:00:00.000Z"}
+      filingDateCalendarFocused={false}
+      finalDetermDetails=""
+      gotFinalDetermCalendarFocused={false}
+      gotFinalDetermDate={"1970-01-01T00:00:00.000Z"}
+      gotFinalResponseCalendarFocused={false}
+      gotFinalResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDateCalendarFocused={false}
+      modalIsOpen={false}
+      note=""
+      status="waitingInterimResponse"
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Full details of request:
+    </p>
+    <textarea
+      className="textarea"
+      name="details"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Notes:
+    </p>
+    <textarea
+      className="textarea"
+      name="note"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <HashLink
+    className="link"
+    to="/create#error"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save request
+    </button>
+  </HashLink>
+</div>
+`;
+
+exports[`Should render error for invalid form submission 2`] = `
+<div
+  className="form"
+>
+  <p
+    className="form__error"
+    id="error"
+  >
+    Please provide a description and an agency.
+  </p>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Request status:
+    </p>
+    <select
+      className="select"
+      onChange={[Function]}
+      value="waitingInterimResponse"
+    >
+      <option
+        value="waitingInterimResponse"
+      >
+        Request filed
+      </option>
+      <option
+        value="waitingFinalResponse"
+      >
+        Interim response received
+      </option>
+      <option
+        value="recordsDenied"
+      >
+        Request denied
+      </option>
+      <option
+        value="recordsGranted"
+      >
+        Request granted
+      </option>
+      <option
+        value="recordsPartiallyGranted"
+      >
+        Request partially granted
+      </option>
+      <option
+        value="extendedFinalResponseDate"
+      >
+        Agency requests extension for final response
+      </option>
+      <option
+        value="appealFiled"
+      >
+        Appeal filed
+      </option>
+      <option
+        value="appealGranted"
+      >
+        Request granted on appeal
+      </option>
+      <option
+        value="appealPartiallyGranted"
+      >
+        Request partially granted on appeal
+      </option>
+      <option
+        value="appealDenied"
+      >
+        Request denied on appeal
+      </option>
+      <option
+        value="extendedFinalDetermDate"
+      >
+        OOR requests extension for appeal decision
+      </option>
+       
+      <option
+        value="waitingCourtDecision"
+      >
+        Agency/third parties challenge appeal decision in court
+      </option>
+      <option
+        value="courtGranted"
+      >
+        Request granted by courts
+      </option>
+    </select>
+  </div>
+  <div
+    className="form__basic-info"
+  >
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Description of request:
+      </p>
+      <input
+        autoFocus={true}
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <p
+        className="form__item-label"
+      >
+        Agency:
+      </p>
+      <input
+        className="text-input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="form__date-container"
+  >
+    <div
+      className="form__group"
+    >
+      <div
+        className="form__label-container"
+      >
+        <p
+          className="form__item-label"
+        >
+          Date request filed:
+        </p>
+        <span>
+          <img
+            className="form__tooltip-image"
+            data-for="filingDate"
+            data-tip={true}
+            src="/images/tooltip.svg"
+          />
+        </span>
+        <ReactTooltip
+          id="filingDate"
+          insecure={true}
+          resizeHide={true}
+          type="info"
+          wrapper="div"
+        >
+          <span>
+            Note: If request was filed after 5 p.m. then enter next day as filing date.
+          </span>
+        </ReactTooltip>
+      </div>
+      <withStyles(SingleDatePicker)
+        anchorDirection="left"
+        appendToBody={false}
+        block={true}
+        calendarInfoPosition="bottom"
+        customCloseIcon={null}
+        customInputIcon={null}
+        date={"1970-01-01T00:00:00.000Z"}
+        daySize={39}
+        disableScroll={false}
+        disabled={false}
+        displayFormat={[Function]}
+        enableOutsideDays={false}
+        firstDayOfWeek={null}
+        focused={false}
+        hideKeyboardShortcutsPanel={false}
+        horizontalMargin={0}
+        horizontalMonthPadding={13}
+        id="date"
+        initialVisibleMonth={null}
+        inputIconPosition="before"
+        isDayBlocked={[Function]}
+        isDayHighlighted={[Function]}
+        isOutsideRange={[Function]}
+        isRTL={false}
+        keepFocusOnInput={false}
+        keepOpenOnDateSelect={false}
+        monthFormat="MMMM YYYY"
+        navNext={null}
+        navPrev={null}
+        noBorder={false}
+        numberOfMonths={1}
+        onClose={[Function]}
+        onDateChange={[Function]}
+        onFocusChange={[Function]}
+        onNextMonthClick={[Function]}
+        onPrevMonthClick={[Function]}
+        openDirection="down"
+        orientation="horizontal"
+        phrases={
+          Object {
+            "calendarLabel": "Calendar",
+            "chooseAvailableDate": [Function],
+            "clearDate": "Clear Date",
+            "closeDatePicker": "Close",
+            "dateIsSelected": [Function],
+            "dateIsUnavailable": [Function],
+            "enterKey": "Enter key",
+            "escape": "Escape key",
+            "hideKeyboardShortcutsPanel": "Close the shortcuts panel.",
+            "homeEnd": "Home and end keys",
+            "jumpToNextMonth": "Move forward to switch to the next month.",
+            "jumpToPrevMonth": "Move backward to switch to the previous month.",
+            "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
+            select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+            "keyboardShortcuts": "Keyboard Shortcuts",
+            "leftArrowRightArrow": "Right and left arrow keys",
+            "moveFocusByOneDay": "Move backward (left) and forward (right) by one day.",
+            "moveFocusByOneMonth": "Switch months.",
+            "moveFocusByOneWeek": "Move backward (up) and forward (down) by one week.",
+            "moveFocustoStartAndEndOfWeek": "Go to the first or last day of a week.",
+            "openThisPanel": "Open this panel.",
+            "pageUpPageDown": "page up and page down keys",
+            "questionMark": "Question mark",
+            "returnFocusToInput": "Return to the date input field.",
+            "selectFocusedDate": "Select the date in focus.",
+            "showKeyboardShortcutsPanel": "Open the keyboard shortcuts panel.",
+            "upArrowDownArrow": "up and down arrow keys",
+          }
+        }
+        placeholder="Date"
+        readOnly={false}
+        regular={false}
+        renderCalendarInfo={null}
+        renderDayContents={null}
+        renderMonthElement={null}
+        renderMonthText={null}
+        reopenPickerOnClearDate={false}
+        required={false}
+        screenReaderInputMessage=""
+        showClearDate={false}
+        showDefaultInputIcon={false}
+        small={false}
+        verticalHeight={null}
+        verticalSpacing={22}
+        weekDayFormat="dd"
+        withFullScreenPortal={false}
+        withPortal={false}
+      />
+    </div>
+    <DateEstimator
+      agency=""
+      appealFilingDate={"1970-01-01T00:00:00.000Z"}
+      appealFilingDateCalendarFocused={false}
+      denialReason=""
+      description=""
+      details=""
+      error="Please provide a description and an agency."
+      estAppealDeadline={"1970-01-24T00:00:00.000Z"}
+      estFinalDetermCalendarFocused={false}
+      estFinalDetermDate={"1970-01-31T00:00:00.000Z"}
+      estFinalResponseCalendarFocused={false}
+      estFinalResponseDate={"1970-01-31T00:00:00.000Z"}
+      estInterimResponseDate={"1970-01-09T00:00:00.000Z"}
+      filingDate={"1970-01-01T00:00:00.000Z"}
+      filingDateCalendarFocused={false}
+      finalDetermDetails=""
+      gotFinalDetermCalendarFocused={false}
+      gotFinalDetermDate={"1970-01-01T00:00:00.000Z"}
+      gotFinalResponseCalendarFocused={false}
+      gotFinalResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDate={"1970-01-01T00:00:00.000Z"}
+      gotInterimResponseDateCalendarFocused={false}
+      modalIsOpen={false}
+      note=""
+      status="waitingInterimResponse"
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Full details of request:
+    </p>
+    <textarea
+      className="textarea"
+      name="details"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__group"
+  >
+    <p
+      className="form__item-label"
+    >
+      Notes:
+    </p>
+    <textarea
+      className="textarea"
+      name="note"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <HashLink
+    className="link"
+    to="/create#error"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save request
+    </button>
+  </HashLink>
+</div>
+`;

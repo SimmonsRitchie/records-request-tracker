@@ -1,0 +1,60 @@
+import moment from 'moment';
+
+const requests = [{
+    id: 1,
+    description: 'Request for campaign finance data',
+    agency: 'Dept of State',
+    details: 'Campaign donations in 2018 election',
+    note: 'Had informal discussion about these docs with press secretary',
+    status: 'waitingFinalResponse',
+    filingDate: moment("20190202").valueOf(),
+    estInterimResponseDate: moment("20190208").valueOf(),
+    gotInterimResponseDate: moment("20190208").valueOf(),
+    estFinalResponseDate: moment("20190202").add(30,'days').valueOf(),
+    gotFinalResponseDate: 0,
+    estAppealDeadline: 0,
+    appealFilingDate: 0,
+    estFinalDetermDate: 0,
+    gotFinalDetermDate: 0,
+    denialReason: '',
+    finalDetermDetails: ''
+},
+{
+    id: 2,
+    description: 'Names of medical marijuana licensing board members',
+    agency: 'Dept of Health',
+    details: 'I want names of the people who approved Pa. medical marijuana licenses',
+    note: 'Although OOR granted appeal, Dept of Health has challenged appeal in court.',
+    status: 'waitingCourtDecision',
+    filingDate: moment("20181005").valueOf(),
+    estInterimResponseDate: moment("20181012").valueOf(),
+    gotInterimResponseDate: moment("20181012").valueOf(),
+    estFinalResponseDate: moment("20181012").add(30,'days').valueOf(),
+    gotFinalResponseDate: moment("20181012").add(30,'days').valueOf(),
+    estAppealDeadline: moment("20181105").valueOf(),
+    appealFilingDate: moment("20181102").valueOf(),
+    estFinalDetermDate: moment("20181102").add(30,'days').valueOf(),
+    gotFinalDetermDate: 0,
+    denialReason: "Agency says it's a secret and not disclosable under RTK",
+    finalDetermDetails: 'OOR says that the records are disclosable under RTK'
+},{
+    id: 3,
+    description: 'Gov. Wolf emails, 2018-2018',
+    agency: 'Office of Governor',
+    details: 'I request all emails send and received by Gov Tom Wolf',
+    note: '',
+    status: 'waitingInterimResponse',
+    filingDate: moment("20190104").valueOf(),
+    estInterimResponseDate: moment("20190111").valueOf(),
+    gotInterimResponseDate: 0,
+    estFinalResponseDate: 0,
+    gotFinalResponseDate: 0,
+    estAppealDeadline: 0,
+    appealFilingDate: 0,
+    estFinalDetermDate: 0,
+    gotFinalDetermDate: 0,
+    denialReason: '',
+    finalDetermDetails: ''
+}];
+
+export default requests;

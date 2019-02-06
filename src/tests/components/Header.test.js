@@ -23,7 +23,7 @@ test('Should render Header correctly', () => {
 test('Should call start Logout on button click', () => {
     // Below, we find the button tag and trigger 'onClick'
     // by simulating a click.
-    wrapper.find('button').simulate('click')
+    wrapper.find('button').at(1).simulate('click')
     // We then check to see whether startLogout was called
     expect(startLogout).toHaveBeenCalled()
 });

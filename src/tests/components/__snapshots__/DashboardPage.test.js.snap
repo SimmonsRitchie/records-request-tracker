@@ -2,6 +2,9 @@
 
 exports[`Should render DashboardPage with expenses 1`] = `
 <div>
-  Dashboard page content
+  <Connect(DashboardSummary) />
+  <Connect(RequestsListFilters) />
+  <Connect(FiltersSummary) />
+  <Connect(RequestList) />
 </div>
 `;

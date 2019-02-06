@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment-business-days';
+import moment from 'moment';
 
 
 const requestStatus = ({

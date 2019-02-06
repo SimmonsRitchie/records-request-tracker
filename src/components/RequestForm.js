@@ -2,7 +2,7 @@ import React from 'react';
 import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import ReactTooltip from 'react-tooltip';
 import { HashLink as Link } from 'react-router-hash-link';
-import moment from 'moment-business-days';
+import moment from 'moment';
 import DateEstimator from './DateEstimator';
 import { addBusinessAndHols } from '../selectors/businessDayCalc'
 
@@ -372,13 +372,13 @@ class RequestForm extends React.Component {
                             </ReactTooltip>
                         </div>
                             <SingleDatePicker
-                            date={this.state.filingDate} // Passing in value of now()
-                            onDateChange={this.onFilingDateChange}
-                            focused={this.state.filingDateCalendarFocused}
-                            onFocusChange={this.onFilingDateFocusChange}
-                            numberOfMonths={1} // number of months that are displayed
-                            isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
-                            block={true}
+                                date={this.state.filingDate} // Passing in value of now()
+                                onDateChange={this.onFilingDateChange}
+                                focused={this.state.filingDateCalendarFocused}
+                                onFocusChange={this.onFilingDateFocusChange}
+                                numberOfMonths={1} // number of months that are displayed
+                                isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())} // days after today's date aren't selectable
+                                block={true}
                             />
                     </div>
                     {/* INTERIM RESPONSE RECIEVED - conditional input */}

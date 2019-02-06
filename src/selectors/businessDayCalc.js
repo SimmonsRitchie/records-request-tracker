@@ -39,7 +39,7 @@ checkIfHoliday(dateToCheck)
     simply update the list included in this function.
     */
 
-import moment from 'moment-business-days';
+import moment from 'moment';
 
 
 export const addBusinessAndHols = (dateToCheck, businessDaysToAdd, options) => {
@@ -52,7 +52,7 @@ export const addBusinessAndHols = (dateToCheck, businessDaysToAdd, options) => {
         if (checkIfHoliday(resultDate)) {
             countOfHols += 1
         } else {
-            if (resultDate.isBusinessDay()) {
+            if (resultDate.isoWeekday() !== 6 && resultDate.isoWeekday() !== 7) {
                 countOfBusinessDays += 1
             } else {
                 countOfNonBusinessDays += 1
