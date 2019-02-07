@@ -12,40 +12,44 @@
     }
 }
 
-.login__box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-.login__arrow-container {
-    display: flex;
-    align-items: flex-start
-}
-
 .login__back {
     height: 2rem;
     margin: $s-size;
 }
 
-
-
-// LOGIN START 
-.login-start-enter {
-    opacity: 0.01;
+.login__fixed-height {
+    height: 200px;
 }
 
-.login-start-enter.login-start-enter-active {
+// FADE
+// appear
+.fade-appear {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-appear.fade-appear-active {
     opacity: 1;
-    transition: opacity 300ms linear;
+    transition: opacity 300ms ease-in;
 }
 
-.login-start-leave {
+// enter
+.fade-enter {
+    opacity: 0;
+    z-index: 1;    
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;    
+}
+
+// exit
+.fade-exit {
     opacity: 1;
 }
 
-.login-start-leave.login-start-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms linear;
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out;    
 }
