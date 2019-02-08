@@ -4,7 +4,7 @@ import { startGoogleLogin } from '../actions/auth'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import LoginPageInitial from './LoginPageInitial'
 import LoginPageEmailSignUp from './LoginPageEmailSignUp'
-import LoginPageEmailLogin from './LoginPageEmailLogin'
+import LoginPageEmailSignIn from './LoginPageEmailSignIn'
 
 
 
@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
 
     handleEmailLogin = () => {
         this.setState(() => ({
-            display: "emailLogin"
+            display: "emailSignIn"
         }))     
     };
 
@@ -40,6 +40,8 @@ class LoginPage extends React.Component {
         }))     
     }
 
+
+
     displayBox = () => {
         if (this.state.display === "loginInitial") {
             return <LoginPageInitial
@@ -50,11 +52,11 @@ class LoginPage extends React.Component {
         } else if (this.state.display === "emailSignUp") {
             return <LoginPageEmailSignUp
                 handleBackToStart={this.handleBackToStart}
-                    />
-        } else if (this.state.display === "emailLogin") {
-            return <LoginPageEmailLogin
+                />
+        } else if (this.state.display === "emailSignIn") {
+            return <LoginPageEmailSignIn
                 handleBackToStart={this.handleBackToStart}
-                    />
+                />
         }
     }
 
@@ -63,12 +65,9 @@ class LoginPage extends React.Component {
             <div className="box-layout">
             <div className="box-layout__box">
                 <h1 className="box-layout__title">Right-To-Know Tracker</h1>
-                <p>Organize your Pa. open record requests in one handy location.</p>
+
                     <TransitionGroup
                         key={this.state.display}
-                        transitionName='fade'
-                        transitionEnterTimeout={300}
-                        transitionLeaveTimeout={300}
                     >
                         <CSSTransition
                             in={this.state.appearHome}

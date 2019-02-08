@@ -28,10 +28,15 @@ button {
     cursor: pointer;
 }
 
-button:disabled {
-    cursor: default;
-}
+// button:disabled {
+//     cursor: default;
+// }
 
 .is-active {
     font-weight: bold;
+}
+
+.button:disabled {
+    opacity: 0.65; 
+    cursor: not-allowed;
 }

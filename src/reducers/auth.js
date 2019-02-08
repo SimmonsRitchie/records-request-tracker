@@ -15,6 +15,16 @@ export default (state = {}, action) => {
             return {
                 uid: action.uid
         }
+        case 'EMAIL_SIGNUP':
+            return {
+                signUpErrorCode: action.signUpErrorCode,
+                signUpErrorMsg: action.signUpErrorMsg
+        }
+        case 'EMAIL_SIGNIN':
+            return {
+                signInErrorCode: action.signInErrorCode,
+                signInErrorMsg: action.signInErrorMsg
+        }
         case 'LOGOUT':
             return {};
         default:

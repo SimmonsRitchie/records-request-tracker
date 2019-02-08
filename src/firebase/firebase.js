@@ -15,12 +15,16 @@ const config = {
 // Initializing firebase and authentication with Google as provider
 firebase.initializeApp(config);
 const database = firebase.database()
-const googleAutProvider = new firebase.auth.GoogleAuthProvider();
+
+// Google auth
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+
 
 
 // EXPORT
 // For use in other parts of the program.
-export { firebase, googleAutProvider, database as default };
+export { firebase, googleAuthProvider, database as default };
 
 
 //----------------- FIREBASE API REFERENCE -------------------
