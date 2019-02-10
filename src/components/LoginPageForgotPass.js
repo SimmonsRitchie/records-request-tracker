@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { emailSignIn } from '../actions/auth'
+import { emailSignIn, emailForgotPass } from '../actions/auth'
 
 class LoginPageEmailSignIn extends React.Component {
     state = {
@@ -19,44 +19,33 @@ class LoginPageEmailSignIn extends React.Component {
         }
     }
 
-    render() {
+    handleEmailForgotPass = () => {
+        console.log("sending email...")
+        this.props.emailForgotPass(this.state.signInEmail)
+        console.log("email sent")
+    }
 
-        const isInvalid = this.state.signInEmail === '' ||
-            this.state.signInPass === ''
+    render() {
 
         return (
             <div className="login__button-container">
+            <p>Reset password</p>
             <input
                 name="signInEmail"
                 className="text-input"
                 placeholder="Enter email"
                 onChange={this.handleOnChange}
                 value={this.state.signInEmail}
-            />
-            <input
-                name="signInPass"
-                className="text-input"
-                placeholder="Enter password"
-                onChange={this.handleOnChange}
-                value={this.state.signInPass}
-            />
-            {this.props.errorMsg && <p className="form__error">Error: {this.props.errorMsg}</p>}
+            />            
             <button
                 className="button"
-                onClick={this.props.handleForgotPass}
+                onClick={this.handleEmailForgotPass}
             >
-                Forgot password?
-            </button>
-            <button
-                className="button"
-                onClick={this.handleOnSubmit}
-                disabled={isInvalid}
-            >
-                Submit
+                Send reset email
             </button>
             <button
                 className="button button--secondary"
-                onClick={this.props.handleBackToStart}
+                onClick={this.props.handleEmailSignIn}
             >
                 Back
             </button>    
@@ -71,6 +60,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    emailForgotPass: (email) => dispatch(emailForgotPass(email)),
     emailSignIn: (email, pass) => dispatch(emailSignIn(email, pass))
 });
 

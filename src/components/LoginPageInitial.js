@@ -6,7 +6,7 @@ const loginPageInitial = (props) => (
             <div className="login__button-container">
                 <button
                     className="button"
-                    onClick={props.handleEmailLogin}
+                    onClick={props.handleEmailSignIn}
                 >
                     Login with Email
                 </button>

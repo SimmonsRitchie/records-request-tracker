@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import LoginPageInitial from './LoginPageInitial'
 import LoginPageEmailSignUp from './LoginPageEmailSignUp'
 import LoginPageEmailSignIn from './LoginPageEmailSignIn'
+import LoginPageForgotPass from './LoginPageForgotPass';
 
 
 
@@ -17,14 +18,13 @@ class LoginPage extends React.Component {
         }
     };
 
-    handleEmailLogin = () => {
+    handleEmailSignIn = () => {
         this.setState(() => ({
             display: "emailSignIn"
         }))     
     };
 
     handleGoogleLogin = () => {
-        console.log("Logging in with google!")
         this.props.startGoogleLogin()
     };
 
@@ -40,12 +40,16 @@ class LoginPage extends React.Component {
         }))     
     }
 
-
+    handleForgotPass = () => {
+        this.setState(() => ({
+            display: "emailForgot",
+        }))     
+    }
 
     displayBox = () => {
         if (this.state.display === "loginInitial") {
             return <LoginPageInitial
-                handleEmailLogin={this.handleEmailLogin}
+                handleEmailSignIn={this.handleEmailSignIn}
                 handleGoogleLogin={this.handleGoogleLogin}
                 handleEmailSignUp={this.handleEmailSignUp}
                 />
@@ -56,6 +60,11 @@ class LoginPage extends React.Component {
         } else if (this.state.display === "emailSignIn") {
             return <LoginPageEmailSignIn
                 handleBackToStart={this.handleBackToStart}
+                handleForgotPass={this.handleForgotPass}
+                />
+        } else if (this.state.display === "emailForgot") {
+            return <LoginPageForgotPass
+                handleEmailSignIn={this.handleEmailSignIn}
                 />
         }
     }

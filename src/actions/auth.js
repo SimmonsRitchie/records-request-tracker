@@ -24,7 +24,6 @@ export const signInError = (signInErrorCode, signInErrorMsg) => ({
     signInErrorMsg
 })
 
-
 export const emailSignUp = (email, pass) => {
     return (dispatch) => {
         return firebase.auth().createUserWithEmailAndPassword(email, pass).then(() => {
@@ -46,6 +45,16 @@ export const emailSignIn = (email, pass) => {
             let errorMessage = error.message;
             console.log(errorCode, errorMessage)
             dispatch(signInError(error.code, error.message))
+        })
+    }
+}
+
+export const emailForgotPass = (email) => {
+    return (dispatch) => {
+        return firebase.auth().sendPasswordResetEmail(email).then(() => {
+            console.log("email sent")
+        }).catch((error) => {
+            console.log("Ooooops: " + error.message)
         })
     }
 }
