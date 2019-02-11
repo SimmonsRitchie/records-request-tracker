@@ -2,13 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { emailSignUp } from '../actions/auth'
 
+const initialState = {
+    firstName: "",
+    lastName: "",
+    signUpEmail: "",
+    signUpPass1: "",
+    signUpPass2: "",
+    error: null
+}
+
 class LoginPageEmailSignUp extends React.Component {
-    state = {
-        signUpEmail: "",
-        signUpPass1: "",
-        signUpPass2: "",
-        error: null
-    }
+    state = initialState
 
     handleOnChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -21,7 +25,15 @@ class LoginPageEmailSignUp extends React.Component {
         } else if (this.state.signUpPass1 === "") {
             this.setState(() => ({ error: "Please enter a password."}))
         } else {
-            this.props.emailSignUp(this.state.signUpEmail, this.state.signUpPass1)
+            const userProfile = {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName
+            }
+            const userLogin = {
+                email: this.state.signUpEmail,
+                pass: this.state.signUpPass1
+            }
+            this.props.emailSignUp(userProfile, userLogin)
         }
     }
 
@@ -35,35 +47,39 @@ class LoginPageEmailSignUp extends React.Component {
         return (
             <div className="login__button-container">
             <h3 className="box-layout__title">New account</h3>
-            <input
-                name="signUpEmail"
-                className="text-input"
-                placeholder="Enter email"
-                onChange={this.handleOnChange}
-                value={this.state.signUpEmail}
-            />
-            <input
-                name="signUpPass1"
-                className="text-input"
-                placeholder="Choose a password"
-                onChange={this.handleOnChange}
-                value={this.state.signUpPass1}
-            />
-            <input
-                name="signUpPass2"
-                className="text-input"
-                placeholder="Retype your password"
-                onChange={this.handleOnChange}
-                value={this.state.signUpPass2}
-            />
-            {this.props.errorMsg && <p className="form__error">Error: {this.props.errorMsg}</p>}
-            <button
-                className="button"
-                disabled={isInvalid}
-                onClick={this.handleOnSubmit}
-            >
-                Submit
-            </button>
+            <form onSubmit={this.handleOnSubmit} class="login__button-container">
+                <input
+                    name="signUpEmail"
+                    className="text-input bottom-margin"
+                    placeholder="Enter email"
+                    onChange={this.handleOnChange}
+                    value={this.state.signUpEmail}
+                />
+                <input
+                    name="signUpPass1"
+                    type="password"
+                    className="text-input bottom-margin"
+                    placeholder="Choose a password"
+                    onChange={this.handleOnChange}
+                    value={this.state.signUpPass1}
+                />
+                <input
+                    name="signUpPass2"
+                    type="password"
+                    className="text-input bottom-margin"
+                    placeholder="Retype your password"
+                    onChange={this.handleOnChange}
+                    value={this.state.signUpPass2}
+                />
+                {this.props.errorMsg && <p className="form__error">Error: {this.props.errorMsg}</p>}
+                <button
+                    className="button bottom-margin"
+                    type="submit"
+                    disabled={isInvalid}
+                >
+                    Sign up
+                </button>
+            </form>
             <button
                 className="button button--secondary"
                 onClick={this.props.handleBackToStart}
@@ -81,7 +97,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    emailSignUp: (email, pass) => dispatch(emailSignUp(email, pass))
+    emailSignUp: (userProfile, userLogin) => dispatch(emailSignUp(userProfile, userLogin))
 });
 
 

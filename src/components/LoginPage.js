@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startGoogleLogin } from '../actions/auth'
+import { startGoogleLogin, clearErrors } from '../actions/auth'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import LoginPageInitial from './LoginPageInitial'
 import LoginPageEmailSignUp from './LoginPageEmailSignUp'
@@ -21,7 +21,8 @@ class LoginPage extends React.Component {
     handleEmailSignIn = () => {
         this.setState(() => ({
             display: "emailSignIn"
-        }))     
+        }))
+        this.props.clearErrors()
     };
 
     handleGoogleLogin = () => {
@@ -31,13 +32,15 @@ class LoginPage extends React.Component {
     handleEmailSignUp= () => {
         this.setState(() => ({
             display: "emailSignUp"
-        }))     
+        }))
+        this.props.clearErrors()     
     };
 
     handleBackToStart = () => {
         this.setState(() => ({
             display: "loginInitial",
-        }))     
+        }))
+        this.props.clearErrors()     
     }
 
     handleForgotPass = () => {
@@ -94,7 +97,8 @@ class LoginPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startGoogleLogin: () => dispatch(startGoogleLogin())
+    startGoogleLogin: () => dispatch(startGoogleLogin()),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default connect(undefined, mapDispatchToProps)(LoginPage)

@@ -1,15 +1,7 @@
 
 .login__button-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    > button {
-        margin: 0 0 $s-size 0;
-    }
-    > input {
-        margin: 0 0 $s-size 0;
-    }
 }
 
 .login__back {

@@ -11,10 +11,13 @@
 // If we log out, object is converted back to empty object.
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'LOGIN':
+        case 'CLEAR_ERRORS':
             return {
-                uid: action.uid
-        }
+                signInErrorCode: "",
+                signInErrorMsg: "",
+                signUpErrorCode: "",
+                signUpErrorMsg: "",
+            }
         case 'EMAIL_SIGNUP':
             return {
                 signUpErrorCode: action.signUpErrorCode,
@@ -27,6 +30,15 @@ export default (state = {}, action) => {
         }
         case 'LOGOUT':
             return {};
+        case 'LOGIN':
+            return {
+                uid: action.uid
+        }
+        case 'RESET_PASS':
+            return {
+                resetEmailSent: action.resetEmailSent,
+                resetEmailMsg: action.resetEmailMsg
+        }
         default:
             return state;
     }

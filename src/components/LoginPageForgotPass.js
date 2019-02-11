@@ -5,7 +5,6 @@ import { emailSignIn, emailForgotPass } from '../actions/auth'
 class LoginPageEmailSignIn extends React.Component {
     state = {
         signInEmail: "",
-        signInPass: "",
     }
 
     handleOnChange = (e) => {
@@ -19,30 +18,38 @@ class LoginPageEmailSignIn extends React.Component {
         }
     }
 
-    handleEmailForgotPass = () => {
-        console.log("sending email...")
+    handleEmailForgotPass = (e) => {
+        e.preventDefault(); //Stops page from refreshing
         this.props.emailForgotPass(this.state.signInEmail)
-        console.log("email sent")
     }
 
     render() {
 
+        const isInvalid = this.state.signInEmail === ''
+
         return (
             <div className="login__button-container">
-            <p>Reset password</p>
-            <input
-                name="signInEmail"
-                className="text-input"
-                placeholder="Enter email"
-                onChange={this.handleOnChange}
-                value={this.state.signInEmail}
-            />            
-            <button
-                className="button"
-                onClick={this.handleEmailForgotPass}
+            <h3 className="box-layout__title">Reset password</h3>
+            <form
+                onSubmit={this.handleEmailForgotPass}
+                class="login__button-container"
             >
-                Send reset email
-            </button>
+                <input
+                    name="signInEmail"
+                    className="text-input bottom-margin"
+                    placeholder="Email address"
+                    onChange={this.handleOnChange}
+                    value={this.state.signInEmail}
+                />     
+                {this.props.resetEmailMsg && <p className="form__error">{this.props.resetEmailMsg}</p>}       
+                <button
+                    className="button bottom-margin"
+                    type="submit"
+                    disabled={isInvalid}
+                >
+                    Send reset email
+                </button>
+            </form>
             <button
                 className="button button--secondary"
                 onClick={this.props.handleEmailSignIn}
@@ -55,13 +62,12 @@ class LoginPageEmailSignIn extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-    errorCode: state.auth.signInErrorCode,
-    errorMsg: state.auth.signInErrorMsg
+    resetEmailSent: state.auth.resetEmailSent,
+    resetEmailMsg: state.auth.resetEmailMsg
 })
 
 const mapDispatchToProps = (dispatch) => ({
     emailForgotPass: (email) => dispatch(emailForgotPass(email)),
-    emailSignIn: (email, pass) => dispatch(emailSignIn(email, pass))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(LoginPageEmailSignIn);
