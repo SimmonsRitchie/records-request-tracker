@@ -19,6 +19,13 @@ export const Header = ({ startLogout }) => (
                             RTK guide
                         </button>
                     </Link>
+                    <Link to="/account">
+                        <button
+                            className="button button--nobg"
+                        >
+                            Account
+                        </button>
+                    </Link>
                     <button
                         className="button button--nobg"
                         onClick={startLogout}
