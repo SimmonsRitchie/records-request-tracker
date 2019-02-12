@@ -1,7 +1,5 @@
 /*
-BUSINESS AND HOLIDAY CALCULATOR
-AUTHOR: Daniel Simmons-Ritchie
-CREATED: Feb 4, 2019
+BUSINESS DAY AND HOLIDAY CALCULATOR
 
 This module takes a date, a number of business days, and then calculates a new date by adding the number
 of business days to the former date.
@@ -30,7 +28,7 @@ addBusinessAndHols(dateToCheck, businessDaysToAdd, options)
             countOfNonBusinessDays: number of non business days between startDate and endDate
             countOfBusinessDays: number of business days between startDate and endDate
             calendarDayDiff: number of calendar days between startDate and endDate
-        }
+
 
 checkIfHoliday(dateToCheck)
 
