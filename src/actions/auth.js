@@ -1,4 +1,4 @@
-import { firebase, googleAuthProvider, database } from '../firebase/firebase'
+import { firebase, googleAuthProvider, doSendEmailVerification } from '../firebase/firebase'
 
 // LOGIN IN
 export const login = (uid) => ({
@@ -24,6 +24,13 @@ export const startLogout = () => {
     };
 };
 
+// // EMAIL VERIFICATION
+// export const verifyMsg = (needResendVerifyEmail, verifyMsg) => ({
+//     type: 'VERIFY_MSG',
+//     needResendVerifyEmail,
+//     verifyMsg
+// })
+
 
 
 // SIGN UP
@@ -32,11 +39,22 @@ export const signUpError = (signUpErrorCode, signUpErrorMsg) => ({
     signUpErrorCode,
     signUpErrorMsg
 })
+
 export const emailSignUp = (userProfile, userLogin) => {
     return (dispatch) => {
         const {email, pass} = userLogin;
-        return firebase.auth().createUserWithEmailAndPassword(email, pass).then(()=> {
+        return firebase.auth().createUserWithEmailAndPassword(email, pass).then((user)=> {
             console.log("User account created")
+            // TODO: Add email verification:
+            // console.log("Sending verification email..")
+            // console.log(firebase.auth().currentUser)
+            // return firebase.auth().currentUser.sendEmailVerification().then(()=>{
+            //     console.log("verification email sent")
+            //     dispatch(startLogout())
+            //     verifyMsg(false,"A verification email has been sent to your inbox. Click the link and try signing in.")
+            // }).catch((error) => {
+            //     console.log("error: " + error.message)
+            // })  
         }).catch((error) => {
             let errorCode = error.code;
             let errorMessage = error.message;
@@ -55,8 +73,18 @@ export const signInError = (signInErrorCode, signInErrorMsg) => ({
 
 export const emailSignIn = (email, pass) => {
     return (dispatch) => {
-        return firebase.auth().signInWithEmailAndPassword(email, pass).then(() => {
-            console.log("Sign in successful")
+        return firebase.auth().signInWithEmailAndPassword(email, pass).then((user) => {
+            console.log("Signing in")
+            // console.log("Checking if user's email is verified")
+            // if (user.emailVerified) {
+            //     console.log("email verified")
+            // } else {
+            //     dispatch(startLogout())
+            //     verifyMsg(true,"Your account hasn't been verified yet. Check your inbox for a link or resend verification email")
+            // //     console.log("email isn't verified")
+            // //     console.log("logging out..")
+            // //     dispatch(logout())
+            // }
         }).catch((error) => {
             // Handle Errors here.
             let errorCode = error.code;

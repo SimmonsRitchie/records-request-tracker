@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { emailSignUp } from '../actions/auth'
 
+
 const initialState = {
     firstName: "",
     lastName: "",
@@ -34,6 +35,7 @@ class LoginPageEmailSignUp extends React.Component {
                 pass: this.state.signUpPass1
             }
             this.props.emailSignUp(userProfile, userLogin)
+
         }
     }
 
@@ -47,7 +49,10 @@ class LoginPageEmailSignUp extends React.Component {
         return (
             <div className="login__button-container">
             <h3 className="box-layout__title">New account</h3>
-            <form onSubmit={this.handleOnSubmit} class="login__button-container">
+            <form
+                onSubmit={this.handleOnSubmit}
+                className="login__button-container"
+            >
                 <input
                     name="signUpEmail"
                     className="text-input bottom-margin"

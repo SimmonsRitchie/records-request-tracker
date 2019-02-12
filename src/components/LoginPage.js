@@ -77,7 +77,6 @@ class LoginPage extends React.Component {
             <div className="box-layout">
             <div className="box-layout__box">
                 <h1 className="box-layout__title">Right-To-Know Tracker</h1>
-
                     <TransitionGroup
                         key={this.state.display}
                     >
@@ -101,6 +100,7 @@ const mapDispatchToProps = (dispatch) => ({
     clearErrors: () => dispatch(clearErrors())
 })
 
-export default connect(undefined, mapDispatchToProps)(LoginPage)
+
+export default connect(undefined,mapDispatchToProps)(LoginPage)
 
 

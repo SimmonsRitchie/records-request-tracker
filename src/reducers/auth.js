@@ -39,6 +39,11 @@ export default (state = {}, action) => {
                 resetEmailSent: action.resetEmailSent,
                 resetEmailMsg: action.resetEmailMsg
         }
+        case 'VERIFY_MSG':
+            return {
+                needResendVerifyEmail: action.needResendVerifyEmail,
+                verifyMsg: action.verifyMsg
+            }
         default:
             return state;
     }
