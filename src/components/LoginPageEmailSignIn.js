@@ -26,48 +26,48 @@ class LoginPageEmailSignIn extends React.Component {
 
         return (
             <div className="login__button-container">
-            <form
-                className="login__button-container"
-                onSubmit={this.handleOnSubmit}
-            >
-                <input
-                    name="signInEmail"
-                    className="text-input bottom-margin"
-                    placeholder="Enter email"
-                    onChange={this.handleOnChange}
-                    value={this.state.signInEmail}
-                />
-                <input
-                    name="signInPass"
-                    type="password"
-                    className="text-input bottom-margin"
-                    placeholder="Enter password"
-                    onChange={this.handleOnChange}
-                    value={this.state.signInPass}
-                />
-                {this.props.errorMsg && <p className="form__error">Error: {this.props.errorMsg}</p>}
-                <button
-                    type="submit"
-                    className="button bottom-margin"
-                    disabled={isInvalid}
+                <form
+                    className="login__button-container"
+                    onSubmit={this.handleOnSubmit}
                 >
-                    Sign-in
+                    <input
+                        name="signInEmail"
+                        className="text-input bottom-margin"
+                        placeholder="Enter email"
+                        onChange={this.handleOnChange}
+                        value={this.state.signInEmail}
+                    />
+                    <input
+                        name="signInPass"
+                        type="password"
+                        className="text-input bottom-margin"
+                        placeholder="Enter password"
+                        onChange={this.handleOnChange}
+                        value={this.state.signInPass}
+                    />
+                    {this.props.errorMsg && <p className="form__error">Error: {this.props.errorMsg}</p>}
+                    <button
+                        type="submit"
+                        className="button bottom-margin"
+                        disabled={isInvalid}
+                    >
+                        Sign-in
+                    </button>
+                </form>
+                <button
+                    className="button bottom-margin"
+                    onClick={this.props.handleForgotPass}
+                >
+                    Forgot password?
                 </button>
-            </form>
-            <button
-                className="button bottom-margin"
-                onClick={this.props.handleForgotPass}
-            >
-                Forgot password?
-            </button>
 
-            <button
-                className="button button--secondary"
-                onClick={this.props.handleBackToStart}
-            >
-                Back
-            </button>    
-        </div>
+                <button
+                    className="button button--secondary"
+                    onClick={this.props.handleBackToStart}
+                >
+                    Back
+                </button>    
+            </div>
         )
     }
 };

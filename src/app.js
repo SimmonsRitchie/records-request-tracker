@@ -85,8 +85,9 @@ firebase.auth().onAuthStateChanged((user) => {
             })        
         } else {
             console.log("user's email isn't verified")
-            console.log("logging out user")
-            store.dispatch(startLogout())
+            console.log("Redirecting user to unverified page")
+            renderApp()
+            history.push('/unverified')
         }
 
     } else {

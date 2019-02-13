@@ -10,6 +10,7 @@ import RtkGuidePage from '../components/RtkGuidePage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import AccountPage from '../components/AccountPage';
+import LoginPageUnverified from '../components/LoginPageUnverified';
 
 export const history = createHistory();
 
@@ -23,6 +24,7 @@ export const history = createHistory();
         <div>
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
+                <PublicRoute path="/unverified" component={LoginPageUnverified}/>
                 <PrivateRoute path="/rtkguide" component={RtkGuidePage}/>
                 <PrivateRoute path="/account" component={AccountPage}/>
                 <PrivateRoute path="/dashboard" component={DashboardPage} />

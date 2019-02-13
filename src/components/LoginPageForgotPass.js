@@ -32,7 +32,7 @@ class LoginPageEmailSignIn extends React.Component {
             <h3 className="box-layout__title">Reset password</h3>
             <form
                 onSubmit={this.handleEmailForgotPass}
-                class="login__button-container"
+                className="login__button-container"
             >
                 <input
                     name="signInEmail"
