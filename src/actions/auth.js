@@ -1,4 +1,6 @@
 import { firebase, googleAuthProvider, doSendEmailVerification } from '../firebase/firebase'
+import AppRouter, { history } from '../routers/AppRouter';
+
 
 // LOGIN IN
 export const login = (uid) => ({
@@ -24,12 +26,12 @@ export const startLogout = () => {
     };
 };
 
-// // EMAIL VERIFICATION
-// export const verifyMsg = (needResendVerifyEmail, verifyMsg) => ({
-//     type: 'VERIFY_MSG',
-//     needResendVerifyEmail,
-//     verifyMsg
-// })
+// EMAIL VERIFICATION
+export const verifyMsg = (needResendVerifyEmail, verifyMsg) => ({
+    type: 'VERIFY_MSG',
+    needResendVerifyEmail, // boolean
+    verifyMsg // string
+})
 
 
 
@@ -45,20 +47,14 @@ export const emailSignUp = (userProfile, userLogin) => {
         const {email, pass} = userLogin;
         return firebase.auth().createUserWithEmailAndPassword(email, pass).then((user)=> {
             console.log("User account created")
-            // TODO: Add email verification:
-            // console.log("Sending verification email..")
-            // console.log(firebase.auth().currentUser)
-            // return firebase.auth().currentUser.sendEmailVerification().then(()=>{
-            //     console.log("verification email sent")
-            //     dispatch(startLogout())
-            //     verifyMsg(false,"A verification email has been sent to your inbox. Click the link and try signing in.")
-            // }).catch((error) => {
-            //     console.log("error: " + error.message)
-            // })  
+            console.log("Sending verification email..")
+            return firebase.auth().currentUser.sendEmailVerification().then(()=>{
+                console.log("verification email sent")
+            }).catch((error) => {
+                console.log("error: " + error.message)
+            })  
         }).catch((error) => {
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            console.log(errorCode, errorMessage)   
+            console.log(error.code, error.message)   
             dispatch(signUpError(error.code, error.message))
         });
     }
@@ -74,17 +70,7 @@ export const signInError = (signInErrorCode, signInErrorMsg) => ({
 export const emailSignIn = (email, pass) => {
     return (dispatch) => {
         return firebase.auth().signInWithEmailAndPassword(email, pass).then((user) => {
-            console.log("Signing in")
-            // console.log("Checking if user's email is verified")
-            // if (user.emailVerified) {
-            //     console.log("email verified")
-            // } else {
-            //     dispatch(startLogout())
-            //     verifyMsg(true,"Your account hasn't been verified yet. Check your inbox for a link or resend verification email")
-            // //     console.log("email isn't verified")
-            // //     console.log("logging out..")
-            // //     dispatch(logout())
-            // }
+            console.log("SIGNIN: Signed in")
         }).catch((error) => {
             // Handle Errors here.
             let errorCode = error.code;
@@ -94,6 +80,7 @@ export const emailSignIn = (email, pass) => {
         })
     }
 }
+
 
 // RESET PASS
 export const resetPassResult = (resetEmailSent, resetEmailMsg) => ({
@@ -114,6 +101,17 @@ export const emailForgotPass = (email) => {
             const resetEmailSent = false
             dispatch(resetPassResult(resetEmailSent, error.message))
         })
+    }
+}
+
+// RESEND VERIFICATION EMAIL
+export const resendVerificationEmail = () => {
+    return (dispatch) => {
+        return firebase.auth().currentUser.sendEmailVerification().then(()=>{
+                        console.log("verification email resent")
+                    }).catch((error) => {
+                        console.log("error: " + error.message)
+                    })  
     }
 }
 

@@ -10,6 +10,10 @@ import RtkGuidePage from '../components/RtkGuidePage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import AccountPage from '../components/AccountPage';
+import EmailUnverifiedPage from '../components/EmailUnverifiedPage';
+import EmailSignInPage from '../components/EmailSignInPage';
+import EmailSignUpPage from '../components/EmailSignUpPage';
+import ForgotPassPage from '../components/ForgotPassPage';
 
 export const history = createHistory();
 
@@ -17,12 +21,17 @@ export const history = createHistory();
 // Router was 'BrowserRouter' in a an earlier version of this program
 // We changed it and passed in history as a prop (from the history module)
 // because it allows us to redirect to pages after logging in/logging out from the app.js file.
-// We couldn't do that before
- const AppRouter = () => (
+// We couldn't do that with BrowserRouter.
+
+const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true}/>
+                <PublicRoute path="/signin" component={EmailSignInPage}/>
+                <PublicRoute path="/signup" component={EmailSignUpPage}/>
+                <PublicRoute path="/forgot" component={ForgotPassPage}/>
+                <PublicRoute path="/unverified" component={EmailUnverifiedPage}/>
                 <PrivateRoute path="/rtkguide" component={RtkGuidePage}/>
                 <PrivateRoute path="/account" component={AccountPage}/>
                 <PrivateRoute path="/dashboard" component={DashboardPage} />
@@ -32,6 +41,6 @@ export const history = createHistory();
             </Switch>    
         </div>
     </Router>
- );
+);
 
- export default AppRouter;
+export default AppRouter;

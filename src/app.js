@@ -8,7 +8,7 @@ import { firebase } from './firebase/firebase'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { login, logout } from './actions/auth';
+import { login, logout, verifyMsg, startLogout } from './actions/auth';
 import { startSetRequests } from './actions/requests'
 import LoadingPage from './components/LoadingPage'
 
@@ -58,9 +58,8 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 // AUTHENTICATION + RENDER
 // NOTE: We use 'login' and 'logout' actions in the function below
 // because we want to login the user if they've visted the app
-// before and they're already logged in. If triggered these apps
-// from the Login component, it means that a user would have to 
-// explicitly login to the app everytime.
+// before and they're already logged in. Without them, it means that a
+// user would have to explicitly login to the app everytime.
 //
 // This is what happens below:
 // 1) Checks whether user is logged in (which would have been triggered
@@ -75,13 +74,22 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        store.dispatch(login(user.uid))
-        store.dispatch(startSetRequests()).then(() => {
-            renderApp();
-            if (history.location.pathname === '/') {
-                history.push('/dashboard')
-            }
-        })
+        if (user.emailVerified) {
+            console.log("user's email address is verified")
+            store.dispatch(login(user.uid))
+            store.dispatch(startSetRequests()).then(() => {
+                renderApp();
+                if (history.location.pathname === '/') {
+                    history.push('/dashboard')
+                }
+            })        
+        } else {
+            console.log("user's email isn't verified")
+            console.log("Redirecting user to unverified page")
+            renderApp()
+            history.push('/unverified')
+        }
+
     } else {
         store.dispatch(logout())
         renderApp();
