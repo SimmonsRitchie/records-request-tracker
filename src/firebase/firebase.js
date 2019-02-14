@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 // CONFIG FIREBASE
-// Here's we're connecting to our firebase database
+// Here we're connecting to our firebase database
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
