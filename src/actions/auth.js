@@ -71,24 +71,6 @@ export const emailSignIn = (email, pass) => {
     return (dispatch) => {
         return firebase.auth().signInWithEmailAndPassword(email, pass).then((user) => {
             console.log("SIGNIN: Signed in")
-            // console.log(user)
-            // // console.log("Checking if user's email is verified")
-            // if (user.emailVerified) {
-            //     console.log("SIGNIN: email verified")
-            //     if (history.location.pathname === '/') {
-            //         history.push('/dashboard')
-            //     }
-            //     console.log("you've been redirected to dashboard")
-            // } else {
-            //     console.log("SIGNIN: Email not verified")
-            //     dispatch(startLogout())
-            //     console.log("SIGNIN: You've been logged out")
-            // //     dispatch(startLogout())
-            // //     verifyMsg(true,"Your account hasn't been verified yet. Check your inbox for a link or resend verification email")
-            // // //     console.log("email isn't verified")
-            // // //     console.log("logging out..")
-            // // //     dispatch(logout())
-            // }
         }).catch((error) => {
             // Handle Errors here.
             let errorCode = error.code;
@@ -119,6 +101,17 @@ export const emailForgotPass = (email) => {
             const resetEmailSent = false
             dispatch(resetPassResult(resetEmailSent, error.message))
         })
+    }
+}
+
+// RESEND VERIFICATION EMAIL
+export const resendVerificationEmail = () => {
+    return (dispatch) => {
+        return firebase.auth().currentUser.sendEmailVerification().then(()=>{
+                        console.log("verification email resent")
+                    }).catch((error) => {
+                        console.log("error: " + error.message)
+                    })  
     }
 }
 
