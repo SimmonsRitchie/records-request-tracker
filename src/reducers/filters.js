@@ -4,7 +4,7 @@ import moment from 'moment';
 const filtersReducerDefaultState = {
     text: "",
     sortBy: 'nextDue', // by default, sorting requests based on those where responses are closest to today's date
-    startDate: moment().subtract(1, 'year'), // by default, only showing expenses between start and end of month
+    startDate: moment().subtract(1, 'year'), // by default, only showing requests that are a year old
     endDate: moment().endOf('day')
 }
 

@@ -1,6 +1,7 @@
+// This function provides a brief summary of a request's status for display on the user's dashboard.
+
 import React from 'react';
 import moment from 'moment';
-
 
 const requestStatus = ({
     status,

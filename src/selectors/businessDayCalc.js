@@ -17,9 +17,10 @@ Custom holidays could be added but it wasn't easy to add holidays that fall on d
 
 addBusinessAndHols(dateToCheck, businessDaysToAdd, options)
 
-    Takes two required args: a date as ISO format (ie. '2009-12-23') or as a moment object, and number of business days.
-    Returns a moment date object with the new date. It also takes a third optional argument, 'options'.
-    If given string "verbose", the function will return an object with the following items:
+    Takes two required args: a date in ISO format (ie. '2009-12-23') or as a moment object, and the desired number
+    of business days to add to this date. It returns a moment date object with the new date. It also takes a third 
+    optional argument, 'options'. If options argument is given string "verbose", the function will return an object
+    with the following items:
 
             startDate: date that function started counting from, ie. dateToCheck
             businessDaysToAdd: number of days that function added to dateToCheck

@@ -1,22 +1,24 @@
-/*This function is designed to sort request items by action/response due date. We get that date by first
-looking at a request's status. Eg. if a request has only been filed, we look at its estInterimResponseDate.
-If a request's status is 'waitingFinalResponse', we look at the requests 'estFinalResponseDate'
+/*This function sort requests in dashboard based on the date a user should expect a response (eg. a final response)
+or needs to take an action (eg. file an appeal).
+
+We get that date based on a request's status. Eg. if a request has only been filed, we look at
+its estInterimResponseDate. If a request's status is 'waitingFinalResponse', we look at the requests
+'estFinalResponseDate'
 
 We compare these times as unix timestamps. We sort them from smallest to largest (ie. oldest date to furthest in future).
 
-To ensure that requests that are no longer relevant to us are at the bottom of the heap (ie, granted, denied and past the appeal
-deadline, appeal denied), they're given a unix timestamp very far in the future (the year 3000). A hacky approach.
-I subtract the request's filing date in order that this lower heap is partially sorted from most recent to oldest.
+To ensure that requests that are no longer relevant to us are at the bottom of the heap (ie, requests granted, denied 
+or past the appeal deadline, appeal denied), they're given a unix timestamp very far in the future (the year 3000).
+This is a somewhat hacky approach. We then subtract the request's filing date in order that this lower heap is still
+sorted from most recent to oldest.
 */
 
 import moment from 'moment';
 
 const dateComparer = ({
-    description,
     status,
     filingDate,
     estInterimResponseDate,
-    gotFinalResponseDate,
     estFinalResponseDate,
     estAppealDeadline,
     estFinalDetermDate
