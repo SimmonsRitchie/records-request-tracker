@@ -9,9 +9,9 @@ import { history } from '../routers/AppRouter'
 
 class ForgotPassPage extends React.Component {
     state = {
-        signInEmail: "",
+        signInEmail: ""
     }
-
+    
     handleOnChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     };
@@ -42,6 +42,7 @@ class ForgotPassPage extends React.Component {
                         >
                             <input
                                 name="signInEmail"
+                                type="text"
                                 className="text-input bottom-margin"
                                 placeholder="Email address"
                                 onChange={this.handleOnChange}
