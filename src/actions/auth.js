@@ -1,5 +1,4 @@
-import { firebase, googleAuthProvider, doSendEmailVerification } from '../firebase/firebase'
-import AppRouter, { history } from '../routers/AppRouter';
+import { firebase, googleAuthProvider } from '../firebase/firebase'
 
 
 // LOGIN IN
@@ -26,29 +25,25 @@ export const startLogout = () => {
     };
 };
 
-// EMAIL VERIFICATION
-export const verifyMsg = (needResendVerifyEmail, verifyMsg) => ({
-    type: 'VERIFY_MSG',
-    needResendVerifyEmail, // boolean
-    verifyMsg // string
-})
-
-
-
 // SIGN UP
+// tells user if sign-up fails/succeeds
 export const signUpError = (signUpErrorCode, signUpErrorMsg) => ({
     type: 'EMAIL_SIGNUP',
     signUpErrorCode,
     signUpErrorMsg
 })
 
+// signs up user
 export const emailSignUp = (userProfile, userLogin) => {
     return (dispatch) => {
         const {email, pass} = userLogin;
         return firebase.auth().createUserWithEmailAndPassword(email, pass).then((user)=> {
             console.log("User account created")
+            const actionCodeSettings = {
+                url: 'https://rtk-tracker.herokuapp.com/'
+            }
             console.log("Sending verification email..")
-            return firebase.auth().currentUser.sendEmailVerification().then(()=>{
+            return firebase.auth().currentUser.sendEmailVerification(actionCodeSettings).then(()=>{
                 console.log("verification email sent")
             }).catch((error) => {
                 console.log("error: " + error.message)
@@ -61,18 +56,19 @@ export const emailSignUp = (userProfile, userLogin) => {
 }
 
 // SIGN IN
+// tells user if sign-in fails/succeeds
 export const signInError = (signInErrorCode, signInErrorMsg) => ({
     type: 'EMAIL_SIGNIN',
     signInErrorCode,
     signInErrorMsg
 })
 
+// signs user in
 export const emailSignIn = (email, pass) => {
     return (dispatch) => {
         return firebase.auth().signInWithEmailAndPassword(email, pass).then((user) => {
             console.log("SIGNIN: Signed in")
         }).catch((error) => {
-            // Handle Errors here.
             let errorCode = error.code;
             let errorMessage = error.message;
             console.log(errorCode, errorMessage)
@@ -83,28 +79,29 @@ export const emailSignIn = (email, pass) => {
 
 
 // RESET PASS
+// tells user if reset fails/succeeds
 export const resetPassResult = (resetEmailSent, resetEmailMsg) => ({
     type: 'RESET_PASS',
     resetEmailSent,
     resetEmailMsg
 })
 
+// sends reset email
 export const emailForgotPass = (email) => {
     return (dispatch) => {
         return firebase.auth().sendPasswordResetEmail(email).then(() => {
-            console.log("Reset email was sent successfully")
             const msg = "A reset email was sent to your inbox. Follow the link, reset your password, and sign in again."
             const resetEmailSent = true
             dispatch(resetPassResult(resetEmailSent, msg))
         }).catch((error) => {
-            console.log("Ooooops: " + error.message)
             const resetEmailSent = false
             dispatch(resetPassResult(resetEmailSent, error.message))
         })
     }
 }
 
-// RESEND VERIFICATION EMAIL
+// VERIFICATION EMAIL
+// Resends verification email
 export const resendVerificationEmail = () => {
     return (dispatch) => {
         return firebase.auth().currentUser.sendEmailVerification().then(()=>{
@@ -116,9 +113,7 @@ export const resendVerificationEmail = () => {
 }
 
 // CLEAR ERRORS
-/* This is to clear error messages from redux store. When called, means that when users leave sign in or sign up pages
-and then return any error messages will have been cleared. */
-
+/* Clears various error messages from redux store. */
 export const clearErrors = () => ({
     type: 'CLEAR_ERRORS'
 })

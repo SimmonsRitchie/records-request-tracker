@@ -69,7 +69,7 @@ class EmailSignInPage extends React.Component {
                         </form>
                         <Link
                             className="button bottom-margin"
-                            to="/forgot"
+                            to='/forgot'
                         >
                             Forgot password?
                         </Link>

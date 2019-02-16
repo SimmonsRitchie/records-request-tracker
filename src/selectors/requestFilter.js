@@ -1,13 +1,12 @@
+
+/* FILTERING
+This function displays requests to our dashboard based on filters and sort criteria chosen by a user.
+
+Based on those filter and sort values, we create a new array.
+*/ 
+
 import moment from 'moment';
 import dateComparer from './dateComparer';
-
-// GET VISIBLE requestS (FILTERING IN EFFECT!)
-// This is just a function that displays only requests based on filters variables
-// Using 'typeof !== number' to say: 'hey, if this is undefined, that's okay, just evaluate it as
-// true and continue with the match.' If a start date is an actual number, then we want it to
-// act as a filter.
-// Filter method creates a new aray based on all items that are evaluated
-// as true
 
 export default (requests, { text, sortBy, startDate, endDate}) => {
     return requests.filter((request) => {

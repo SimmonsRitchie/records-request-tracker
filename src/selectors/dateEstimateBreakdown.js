@@ -1,4 +1,4 @@
-/* This is a function that returns a short explanation of how estimated dates are calculated.
+/* This function returns a short explanation of how estimated request dates are calculated for use as tooltips.
 */
 
 import React from 'react';

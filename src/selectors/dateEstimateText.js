@@ -1,12 +1,10 @@
-/* This is a function that returns a small piece of text, wrapped in JSX, regarding when
-filing responses/actions are due. Text is determined based on estimated dates (eg. estInterimResponseDate) and status.
+/* This function returns a small piece of text, wrapped in JSX, regarding when
+filing responses/actions are due for use on individual request pages.
 
-This function has been broken out into a seperate file so that it's reuseable.
+Text is determined based on estimated dates (eg. estInterimResponseDate) and status.
 */
 
-import moment from 'moment';
 import React from 'react';
-
 
 
 const dateEstimateText = (status, estimatedDates) => {

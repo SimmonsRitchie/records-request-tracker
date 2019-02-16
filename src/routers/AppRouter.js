@@ -15,15 +15,7 @@ import EmailSignInPage from '../components/EmailSignInPage';
 import EmailSignUpPage from '../components/EmailSignUpPage';
 import ForgotPassPage from '../components/ForgotPassPage';
 
-
-
 export const history = createHistory();
-
-// NOTE
-// Router was 'BrowserRouter' in a an earlier version of this program
-// We changed it and passed in history as a prop (from the history module)
-// because it allows us to redirect to pages after logging in/logging out from the app.js file.
-// We couldn't do that with BrowserRouter.
 
 const AppRouter = () => (
     <Router history={history}>

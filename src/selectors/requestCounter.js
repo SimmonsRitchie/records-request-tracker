@@ -1,4 +1,4 @@
-// GETS TOTAL NUMBER OF 'ACTIVE','GRANTED', AND 'DENIED' REQUESTS
+// These functions get the total number of a user's active, granted, and denied requests.
 
 export const getTotalActiveRequests = (requests) => {
     return requests.reduce((accumulator, currentVal) => {

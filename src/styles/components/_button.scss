@@ -12,6 +12,9 @@
     padding: $s-size;
     margin: 0;
     text-decoration: none;
+    &:hover {
+        background: darken($blue, 7%);
+    };
 }
 
 .button-container {
@@ -21,15 +24,25 @@
 
 .button--nobg {
     background: none;
+    &:hover {
+        background: none;
+        color: $orange;
+    };
 }
 
 .button--secondary {
-    background: #888888;
+    background: $grey;
+    &:hover {
+        background: darken($grey, 7%);
+    };
 }
 
 .button--remove {
     margin: 0 0 $s-size 0;
-    background: #888888;
+    background: $grey;
+    &:hover {
+        background: darken($grey, 7%);
+    };
 }
 
 .bottom-margin {

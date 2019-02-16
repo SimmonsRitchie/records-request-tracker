@@ -11,11 +11,11 @@ import RemovalModal from './RemovalModal'
 2. Firstly, we pass down the request info as the 'request' props. We get this info from redux.
 In mapStateToProps we get data for the request that matches the ID of the 
 URL. Eg. /edit/123 will get request data for the request with ID '123' 
-3. Then, like AddExpensePage, we pass down the editRequest action dispatcher
-to ExpenseForm under the 'onSubmit' prop.
+3. Then, like AddRequestPage, we pass down the editRequest action dispatcher
+to RequestForm under the 'onSubmit' prop.
 4. When a user hits the 'save' button in RequestForm, it triggers onSubmit.
-5. In this case, because we're feeding the 'editExpense' action instead of the
-'addExpense' action, it triggers the 'editExpense' action when a user clicks the 'save' button.
+5. In this case, because we're feeding the 'editRequest' action instead of the
+'addRequest' action, it triggers the 'editRequest' action when a user clicks the 'save' button.
 
 */
 
