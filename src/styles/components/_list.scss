@@ -26,24 +26,29 @@ nicer */
 HOVER: Below we use &:hover, a shorthand way of making a CSS change happen
 when it's hovered over.
 */
-.list-item {
-    border: 1px solid darken($off-white, 7%);
-    border-top: none;
-    color: $dark-grey;
-    display: flex;
-    flex-direction: column;
-    padding: $s-size;
-    text-decoration: none;
-    transition: background .3s ease;
-    &:hover {
-        background: $off-white;
+
+.list-item__container-outer {
+  display: flex;
+  flex-direction: column;
+  padding: $s-size;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  text-decoration: none;
+  color: $grey;
+  transition: background .3s ease;
+  &:hover {
+      background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) { //Moves amount to the the side when viewed in larger screens
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      align-content: stretch;
+      padding: $m-size;
     }
-    @media (min-width: $desktop-breakpoint) { //Moves amount to the the side when viewed in larger screens
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: $m-size;
-    }
+}
+
+.list-item__container-left {
 }
 
 .list-item--message {
@@ -57,8 +62,9 @@ when it's hovered over.
 }
 
 .list-item__title {
-    margin: 0;
-    word-break: break-all; //Stops user from breaking display by entering in super long description
+    margin: 0 0 $s-size 0;
+    color: $dark-grey;
+    // word-break: break-all; //Stops user from breaking display by entering in super long description
 }
 
 .list-item__subtitle {
@@ -67,12 +73,27 @@ when it's hovered over.
     word-break: break-all; //Stops user from breaking display by entering in super long description
 }
 
-.list-item__data {
-    margin: $s-size 0 0 0; // resolves issue with margin being way too big on mobile
-    @media (min-width: $desktop-breakpoint) {
-        margin: 0;
-        padding-left: $s-size; // gives us some space if user enters really long item description
-    }
+.list-item__container-right {
+
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  text-align: right;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 100%;
+  width: 30rem;
+  max-width: 30rem;
+  min-width: 30rem;
+  margin: 0 0 0 0; // resolves issue with margin being way too big on mobile
+}
+
+.list-item__agency {
+    text-align: right;
+    color: $grey;
+    margin: 0;
+    font-size: none;
+    font-weight: 400;
 }
 
 

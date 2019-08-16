@@ -10,11 +10,11 @@ const RequestListItem = (props) => {
 
     return (
     <Link 
-        className="list-item"
         to={`/edit/${props.request.id}`}
+        className="list-item__container-outer"
     >
-        <div>
-            <h3>
+        <div className="list-item__container-left">
+            <h3 className="list-item__title">
                 {props.request.description}
             </h3>
             <span className="list-item__subtitle">
@@ -25,11 +25,11 @@ const RequestListItem = (props) => {
                 {statusSummary}
             </span>
         </div>
-        <h3
-            className="list-item__data show-for-desktop">
-            {props.request.agency}
-        </h3>
-
+        <div className="list-item__container-right">
+          <div className="show-for-desktop">
+            <h3 className="list-item__agency">{props.request.agency}</h3>
+          </div>
+        </div>
     </Link>
     )
 }
