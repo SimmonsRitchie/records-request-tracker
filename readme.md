@@ -1,4 +1,4 @@
-# RTK Tracker
+### RTK Tracker
 
 This app is designed to help journalists in Pennsylvania track government record requests filed under the state's 'Right to Know Law'.
 
