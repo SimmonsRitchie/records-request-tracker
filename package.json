@@ -37,14 +37,14 @@
     "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
     "uuid": "3.1.0",
-    "validator": "8.0.0"
+    "validator": "8.0.0",
+    "@babel/polyfill": "^7.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
