@@ -25,7 +25,7 @@
     "lodash": "^4.17.13",
     "lodash-es": "^4.17.14",
     "lodash.mergewith": "^4.6.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
     "raf": "3.3.2",
